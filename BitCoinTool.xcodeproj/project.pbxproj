@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3605328F1FBDC30D00CE145B /* PriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605328E1FBDC30D00CE145B /* PriceController.swift */; };
+		360532911FBDC32A00CE145B /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360532901FBDC32A00CE145B /* ConverterController.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
-		367E4E0B1FBD912C0013E89F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E0A1FBD912C0013E89F /* ViewController.swift */; };
 		367E4E0E1FBD912C0013E89F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0C1FBD912C0013E89F /* Main.storyboard */; };
 		367E4E101FBD912C0013E89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0F1FBD912C0013E89F /* Assets.xcassets */; };
 		367E4E131FBD912C0013E89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */; };
@@ -34,9 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3605328E1FBDC30D00CE145B /* PriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceController.swift; sourceTree = "<group>"; };
+		360532901FBDC32A00CE145B /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		367E4E0A1FBD912C0013E89F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		367E4E0D1FBD912C0013E89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		367E4E0F1FBD912C0013E89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		367E4E121FBD912C0013E89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,6 +76,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360532861FBDC1EE00CE145B /* Application Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				367E4E081FBD912C0013E89F /* AppDelegate.swift */,
+			);
+			path = "Application Delegate";
+			sourceTree = "<group>";
+		};
+		360532871FBDC20000CE145B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3605328E1FBDC30D00CE145B /* PriceController.swift */,
+				360532901FBDC32A00CE145B /* ConverterController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		360532881FBDC20900CE145B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		360532891FBDC22000CE145B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				367E4E0C1FBD912C0013E89F /* Main.storyboard */,
+				367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3605328A1FBDC23400CE145B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3605328B1FBDC24A00CE145B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				367E4E0F1FBD912C0013E89F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3605328C1FBDC27B00CE145B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		3605328D1FBDC2C500CE145B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		367E4DFC1FBD912C0013E89F = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +161,15 @@
 		367E4E071FBD912C0013E89F /* BitCoinTool */ = {
 			isa = PBXGroup;
 			children = (
-				367E4E081FBD912C0013E89F /* AppDelegate.swift */,
-				367E4E0A1FBD912C0013E89F /* ViewController.swift */,
-				367E4E0C1FBD912C0013E89F /* Main.storyboard */,
-				367E4E0F1FBD912C0013E89F /* Assets.xcassets */,
-				367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */,
 				367E4E141FBD912C0013E89F /* Info.plist */,
+				360532891FBDC22000CE145B /* Storyboards */,
+				360532881FBDC20900CE145B /* Models */,
+				360532871FBDC20000CE145B /* Controllers */,
+				360532861FBDC1EE00CE145B /* Application Delegate */,
+				3605328D1FBDC2C500CE145B /* Protocols */,
+				3605328B1FBDC24A00CE145B /* Resources */,
+				3605328A1FBDC23400CE145B /* Supporting Files */,
+				3605328C1FBDC27B00CE145B /* Configuration */,
 			);
 			path = BitCoinTool;
 			sourceTree = "<group>";
@@ -259,8 +326,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				367E4E0B1FBD912C0013E89F /* ViewController.swift in Sources */,
 				367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */,
+				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
+				3605328F1FBDC30D00CE145B /* PriceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = bogart.BitCoinTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -448,7 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = bogart.BitCoinTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

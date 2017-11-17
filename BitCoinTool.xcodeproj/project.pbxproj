@@ -15,6 +15,8 @@
 		367E4E131FBD912C0013E89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */; };
 		367E4E1E1FBD912C0013E89F /* BitCoinToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E1D1FBD912C0013E89F /* BitCoinToolTests.swift */; };
 		367E4E291FBD912C0013E89F /* BitCoinToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */; };
+		369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8A1FBF63550063C774 /* InfoController.swift */; };
+		369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* CurrencyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		367E4E241FBD912C0013E89F /* BitCoinToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinToolUITests.swift; sourceTree = "<group>"; };
 		367E4E2A1FBD912C0013E89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		369BFB8A1FBF63550063C774 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
+		369BFB8C1FBF66950063C774 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +91,8 @@
 		360532871FBDC20000CE145B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3605328E1FBDC30D00CE145B /* PriceController.swift */,
-				360532901FBDC32A00CE145B /* ConverterController.swift */,
+				369BFB801FBF57190063C774 /* Price Controller */,
+				369BFB811FBF57420063C774 /* Converter Controller */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -162,10 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				367E4E141FBD912C0013E89F /* Info.plist */,
-				360532891FBDC22000CE145B /* Storyboards */,
-				360532881FBDC20900CE145B /* Models */,
-				360532871FBDC20000CE145B /* Controllers */,
 				360532861FBDC1EE00CE145B /* Application Delegate */,
+				360532891FBDC22000CE145B /* Storyboards */,
+				360532871FBDC20000CE145B /* Controllers */,
+				360532881FBDC20900CE145B /* Models */,
 				3605328D1FBDC2C500CE145B /* Protocols */,
 				3605328B1FBDC24A00CE145B /* Resources */,
 				3605328A1FBDC23400CE145B /* Supporting Files */,
@@ -190,6 +194,24 @@
 				367E4E2A1FBD912C0013E89F /* Info.plist */,
 			);
 			path = BitCoinToolUITests;
+			sourceTree = "<group>";
+		};
+		369BFB801FBF57190063C774 /* Price Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3605328E1FBDC30D00CE145B /* PriceController.swift */,
+				369BFB8A1FBF63550063C774 /* InfoController.swift */,
+				369BFB8C1FBF66950063C774 /* CurrencyController.swift */,
+			);
+			path = "Price Controller";
+			sourceTree = "<group>";
+		};
+		369BFB811FBF57420063C774 /* Converter Controller */ = {
+			isa = PBXGroup;
+			children = (
+				360532901FBDC32A00CE145B /* ConverterController.swift */,
+			);
+			path = "Converter Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,7 +350,9 @@
 			files = (
 				367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */,
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
+				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
 				3605328F1FBDC30D00CE145B /* PriceController.swift in Sources */,
+				369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

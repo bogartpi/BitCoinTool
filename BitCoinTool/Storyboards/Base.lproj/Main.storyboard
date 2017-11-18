@@ -28,7 +28,7 @@
         <!--Item 1-->
         <scene sceneID="Adp-1Z-caj">
             <objects>
-                <viewController id="ozd-qv-KQk" customClass="PriceController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ozd-qv-KQk" customClass="RootController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="swb-mF-N5q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJd-zO-6YC">
                                 <rect key="frame" x="0.0" y="200" width="375" height="418"/>
                                 <connections>
-                                    <segue destination="Obs-RZ-e9j" kind="embed" identifier="SegueCurrency" id="Gdq-Sb-1fD"/>
+                                    <segue destination="Obs-RZ-e9j" kind="embed" identifier="SegueCurrencyView" id="Gdq-Sb-1fD"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -84,11 +84,10 @@
             </objects>
             <point key="canvasLocation" x="-1959" y="-208"/>
         </scene>
-        <!--View Controller-->
+        <!--Info Controller-->
         <scene sceneID="e4m-LD-f6U">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XPd-lg-Y9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="N3X-Wt-z8j" sceneMemberID="viewController">
+                <viewController id="N3X-Wt-z8j" customClass="InfoController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t2I-qJ-KVL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,21 +113,21 @@
                         <viewLayoutGuide key="safeArea" id="iHl-ts-Jj0"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XPd-lg-Y9m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-143" y="-750"/>
         </scene>
-        <!--View Controller-->
+        <!--Currency Controller-->
         <scene sceneID="rbf-LQ-53R">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bKy-m2-dY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Obs-RZ-e9j" sceneMemberID="viewController">
+                <viewController id="Obs-RZ-e9j" customClass="CurrencyController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BaD-Vc-OZK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="418"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.32549019610000002" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="F19-D1-Tn2"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bKy-m2-dY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-143" y="-410"/>
         </scene>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3605328F1FBDC30D00CE145B /* PriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605328E1FBDC30D00CE145B /* PriceController.swift */; };
+		3605328F1FBDC30D00CE145B /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605328E1FBDC30D00CE145B /* RootController.swift */; };
 		360532911FBDC32A00CE145B /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360532901FBDC32A00CE145B /* ConverterController.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
 		367E4E0E1FBD912C0013E89F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0C1FBD912C0013E89F /* Main.storyboard */; };
@@ -17,6 +17,7 @@
 		367E4E291FBD912C0013E89F /* BitCoinToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */; };
 		369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8A1FBF63550063C774 /* InfoController.swift */; };
 		369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* CurrencyController.swift */; };
+		36BCCC641FC010880015005C /* PriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC631FC010880015005C /* PriceController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3605328E1FBDC30D00CE145B /* PriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceController.swift; sourceTree = "<group>"; };
+		3605328E1FBDC30D00CE145B /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
 		360532901FBDC32A00CE145B /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		367E4E2A1FBD912C0013E89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		369BFB8A1FBF63550063C774 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		369BFB8C1FBF66950063C774 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
+		36BCCC631FC010880015005C /* PriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 		360532871FBDC20000CE145B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				369BFB801FBF57190063C774 /* Price Controller */,
+				36BCCC621FC010330015005C /* Root Controller */,
 				369BFB811FBF57420063C774 /* Converter Controller */,
 			);
 			path = Controllers;
@@ -199,9 +201,9 @@
 		369BFB801FBF57190063C774 /* Price Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3605328E1FBDC30D00CE145B /* PriceController.swift */,
 				369BFB8A1FBF63550063C774 /* InfoController.swift */,
 				369BFB8C1FBF66950063C774 /* CurrencyController.swift */,
+				36BCCC631FC010880015005C /* PriceController.swift */,
 			);
 			path = "Price Controller";
 			sourceTree = "<group>";
@@ -212,6 +214,15 @@
 				360532901FBDC32A00CE145B /* ConverterController.swift */,
 			);
 			path = "Converter Controller";
+			sourceTree = "<group>";
+		};
+		36BCCC621FC010330015005C /* Root Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3605328E1FBDC30D00CE145B /* RootController.swift */,
+				369BFB801FBF57190063C774 /* Price Controller */,
+			);
+			path = "Root Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,8 +362,9 @@
 				367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */,
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
 				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
-				3605328F1FBDC30D00CE145B /* PriceController.swift in Sources */,
+				3605328F1FBDC30D00CE145B /* RootController.swift in Sources */,
 				369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */,
+				36BCCC641FC010880015005C /* PriceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

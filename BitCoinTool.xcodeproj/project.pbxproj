@@ -17,6 +17,10 @@
 		367E4E291FBD912C0013E89F /* BitCoinToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */; };
 		369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8A1FBF63550063C774 /* InfoController.swift */; };
 		369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* CurrencyController.swift */; };
+		36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DB1FC06B2800C6FE85 /* Configuration.swift */; };
+		36A493DE1FC0796F00C6FE85 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DD1FC0796F00C6FE85 /* CurrencyData.swift */; };
+		36A493E01FC08ADC00C6FE85 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DF1FC08ADC00C6FE85 /* JSONDecodable.swift */; };
+		36A493E31FC202A100C6FE85 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493E21FC202A100C6FE85 /* DataManager.swift */; };
 		36BCCC641FC010880015005C /* PriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC631FC010880015005C /* PriceController.swift */; };
 		36BCCC681FC01BE10015005C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC671FC01BE10015005C /* SettingsController.swift */; };
 		36BCCC6B1FC01C0F0015005C /* AddCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6A1FC01C0F0015005C /* AddCurrencyController.swift */; };
@@ -57,6 +61,10 @@
 		367E4E2A1FBD912C0013E89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		369BFB8A1FBF63550063C774 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		369BFB8C1FBF66950063C774 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
+		36A493DB1FC06B2800C6FE85 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		36A493DD1FC0796F00C6FE85 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
+		36A493DF1FC08ADC00C6FE85 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		36A493E21FC202A100C6FE85 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		36BCCC631FC010880015005C /* PriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceController.swift; sourceTree = "<group>"; };
 		36BCCC671FC01BE10015005C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		36BCCC6A1FC01C0F0015005C /* AddCurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyController.swift; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 		360532881FBDC20900CE145B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				36A493DD1FC0796F00C6FE85 /* CurrencyData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,6 +148,7 @@
 		3605328C1FBDC27B00CE145B /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				36A493DB1FC06B2800C6FE85 /* Configuration.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -146,6 +156,7 @@
 		3605328D1FBDC2C500CE145B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				36A493DF1FC08ADC00C6FE85 /* JSONDecodable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 				360532871FBDC20000CE145B /* Controllers */,
 				360532881FBDC20900CE145B /* Models */,
 				3605328D1FBDC2C500CE145B /* Protocols */,
+				36A493E11FC2028100C6FE85 /* Managers */,
 				3605328B1FBDC24A00CE145B /* Resources */,
 				3605328A1FBDC23400CE145B /* Supporting Files */,
 				3605328C1FBDC27B00CE145B /* Configuration */,
@@ -221,6 +233,14 @@
 				360532901FBDC32A00CE145B /* ConverterController.swift */,
 			);
 			path = "Converter Controller";
+			sourceTree = "<group>";
+		};
+		36A493E11FC2028100C6FE85 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				36A493E21FC202A100C6FE85 /* DataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		36BCCC621FC010330015005C /* Root(Price) Controller */ = {
@@ -395,11 +415,15 @@
 				367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */,
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
 				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
+				36A493E01FC08ADC00C6FE85 /* JSONDecodable.swift in Sources */,
 				36BCCC681FC01BE10015005C /* SettingsController.swift in Sources */,
 				3605328F1FBDC30D00CE145B /* RootController.swift in Sources */,
 				369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */,
+				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
 				36BCCC6B1FC01C0F0015005C /* AddCurrencyController.swift in Sources */,
+				36A493DE1FC0796F00C6FE85 /* CurrencyData.swift in Sources */,
+				36A493E31FC202A100C6FE85 /* DataManager.swift in Sources */,
 				36BCCC641FC010880015005C /* PriceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

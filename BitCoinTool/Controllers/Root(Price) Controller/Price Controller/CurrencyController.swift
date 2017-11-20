@@ -18,6 +18,7 @@ class CurrencyController: PriceController {
     
     var delegate: CurrencyControllerDelegate?
     
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {

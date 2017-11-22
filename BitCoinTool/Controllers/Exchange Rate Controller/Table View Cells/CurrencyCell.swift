@@ -16,10 +16,6 @@ class CurrencyCell: UITableViewCell {
     
     // MARK: - Properties
     
-    @IBOutlet weak var shortCurrencyLabel: UILabel!
-    @IBOutlet weak var longCurrencyLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var changePriceLabel: UILabel!
     
     
     override func awakeFromNib() {

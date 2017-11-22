@@ -12,9 +12,9 @@ struct API {
     // https://api.coindesk.com/v1/bpi/currentprice/nzd.json
     
     static let BaseURL = URL(string: "https://api.coindesk.com/v1/bpi/currentprice/")!
-    static let currencyKey = "nzd.json"
+    static let currencyKey = "nzd"
     
-    static var buildBaseUrl: URL {
+    static var builtBaseUrl: URL {
         return BaseURL.appendingPathComponent(currencyKey)
     }
 }

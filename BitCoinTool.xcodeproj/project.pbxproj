@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3605328F1FBDC30D00CE145B /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3605328E1FBDC30D00CE145B /* RootController.swift */; };
 		360532911FBDC32A00CE145B /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360532901FBDC32A00CE145B /* ConverterController.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
 		367E4E0E1FBD912C0013E89F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0C1FBD912C0013E89F /* Main.storyboard */; };
@@ -15,15 +14,12 @@
 		367E4E131FBD912C0013E89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */; };
 		367E4E1E1FBD912C0013E89F /* BitCoinToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E1D1FBD912C0013E89F /* BitCoinToolTests.swift */; };
 		367E4E291FBD912C0013E89F /* BitCoinToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */; };
-		369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8A1FBF63550063C774 /* InfoController.swift */; };
 		369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* CurrencyController.swift */; };
 		36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DB1FC06B2800C6FE85 /* Configuration.swift */; };
 		36A493DE1FC0796F00C6FE85 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DD1FC0796F00C6FE85 /* CurrencyData.swift */; };
 		36A493E01FC08ADC00C6FE85 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DF1FC08ADC00C6FE85 /* JSONDecodable.swift */; };
 		36A493E31FC202A100C6FE85 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493E21FC202A100C6FE85 /* DataManager.swift */; };
-		36BCCC641FC010880015005C /* PriceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC631FC010880015005C /* PriceController.swift */; };
-		36BCCC681FC01BE10015005C /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC671FC01BE10015005C /* SettingsController.swift */; };
-		36BCCC6B1FC01C0F0015005C /* AddCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6A1FC01C0F0015005C /* AddCurrencyController.swift */; };
+		36BCCC641FC010880015005C /* MainCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC631FC010880015005C /* MainCurrencyController.swift */; };
 		36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* CurrencyCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3605328E1FBDC30D00CE145B /* RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
 		360532901FBDC32A00CE145B /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,15 +54,12 @@
 		367E4E241FBD912C0013E89F /* BitCoinToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E281FBD912C0013E89F /* BitCoinToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinToolUITests.swift; sourceTree = "<group>"; };
 		367E4E2A1FBD912C0013E89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		369BFB8A1FBF63550063C774 /* InfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoController.swift; sourceTree = "<group>"; };
 		369BFB8C1FBF66950063C774 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		36A493DB1FC06B2800C6FE85 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		36A493DD1FC0796F00C6FE85 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		36A493DF1FC08ADC00C6FE85 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
 		36A493E21FC202A100C6FE85 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		36BCCC631FC010880015005C /* PriceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceController.swift; sourceTree = "<group>"; };
-		36BCCC671FC01BE10015005C /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
-		36BCCC6A1FC01C0F0015005C /* AddCurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyController.swift; sourceTree = "<group>"; };
+		36BCCC631FC010880015005C /* MainCurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCurrencyController.swift; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +99,7 @@
 		360532871FBDC20000CE145B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				36BCCC621FC010330015005C /* Root(Price) Controller */,
+				369BFB801FBF57190063C774 /* Exchange Rate Controller */,
 				369BFB811FBF57420063C774 /* Converter Controller */,
 			);
 			path = Controllers;
@@ -216,15 +208,14 @@
 			path = BitCoinToolUITests;
 			sourceTree = "<group>";
 		};
-		369BFB801FBF57190063C774 /* Price Controller */ = {
+		369BFB801FBF57190063C774 /* Exchange Rate Controller */ = {
 			isa = PBXGroup;
 			children = (
-				369BFB8A1FBF63550063C774 /* InfoController.swift */,
 				369BFB8C1FBF66950063C774 /* CurrencyController.swift */,
-				36BCCC631FC010880015005C /* PriceController.swift */,
+				36BCCC631FC010880015005C /* MainCurrencyController.swift */,
 				36BCCC6C1FC031D60015005C /* Table View Cells */,
 			);
-			path = "Price Controller";
+			path = "Exchange Rate Controller";
 			sourceTree = "<group>";
 		};
 		369BFB811FBF57420063C774 /* Converter Controller */ = {
@@ -241,33 +232,6 @@
 				36A493E21FC202A100C6FE85 /* DataManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		36BCCC621FC010330015005C /* Root(Price) Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3605328E1FBDC30D00CE145B /* RootController.swift */,
-				369BFB801FBF57190063C774 /* Price Controller */,
-				36BCCC691FC01BED0015005C /* AddCurrency Controller */,
-				36BCCC661FC01BA80015005C /* Settings Controller */,
-			);
-			path = "Root(Price) Controller";
-			sourceTree = "<group>";
-		};
-		36BCCC661FC01BA80015005C /* Settings Controller */ = {
-			isa = PBXGroup;
-			children = (
-				36BCCC671FC01BE10015005C /* SettingsController.swift */,
-			);
-			path = "Settings Controller";
-			sourceTree = "<group>";
-		};
-		36BCCC691FC01BED0015005C /* AddCurrency Controller */ = {
-			isa = PBXGroup;
-			children = (
-				36BCCC6A1FC01C0F0015005C /* AddCurrencyController.swift */,
-			);
-			path = "AddCurrency Controller";
 			sourceTree = "<group>";
 		};
 		36BCCC6C1FC031D60015005C /* Table View Cells */ = {
@@ -416,15 +380,11 @@
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
 				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
 				36A493E01FC08ADC00C6FE85 /* JSONDecodable.swift in Sources */,
-				36BCCC681FC01BE10015005C /* SettingsController.swift in Sources */,
-				3605328F1FBDC30D00CE145B /* RootController.swift in Sources */,
-				369BFB8B1FBF63550063C774 /* InfoController.swift in Sources */,
 				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
-				36BCCC6B1FC01C0F0015005C /* AddCurrencyController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* CurrencyData.swift in Sources */,
 				36A493E31FC202A100C6FE85 /* DataManager.swift in Sources */,
-				36BCCC641FC010880015005C /* PriceController.swift in Sources */,
+				36BCCC641FC010880015005C /* MainCurrencyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

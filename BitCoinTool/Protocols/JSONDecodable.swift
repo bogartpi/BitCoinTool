@@ -43,9 +43,13 @@ struct JSONDecoder {
         return try T(decoder: decoder)
     }
     
+    // MARK: -
+    
     private init(JSONData: JSON) {
         self.JSONData = JSONData
     }
+    
+    // MARK: - Public Interface
     
     func decode<T>(key: String) throws -> T {
         
@@ -54,6 +58,8 @@ struct JSONDecoder {
         }
         return value
     }
+    
+    // MARK: - Public Interface
     
     private func value<T>(forKey key: String) throws -> T {
         guard let value = JSONData[key] as? T else {

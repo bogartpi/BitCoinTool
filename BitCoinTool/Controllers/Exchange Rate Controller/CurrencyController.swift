@@ -12,12 +12,17 @@ protocol CurrencyControllerDelegate {
     
 }
 
-class CurrencyController: PriceController {
+class CurrencyController: MainCurrencyController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var delegate: CurrencyControllerDelegate?
     
+    var exchangeData: CurrencyData? {
+        didSet {
+            print("Retrieved  Exchange Data")
+        }
+    }
     
     // MARK: - View Life Cycle
     

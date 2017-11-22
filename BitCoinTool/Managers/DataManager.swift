@@ -26,7 +26,7 @@ class DataManager {
     
     func getCurrencyDataWithCode(currencyCode: String, completion: @escaping CurrencyDataCompletion) {
         // Create URL
-        let url = baseURL.appendingPathComponent("\(currencyCode).json")
+        let url = baseURL.appendingPathComponent("\(currencyCode)")
         
         // Create Data Task
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -42,6 +42,7 @@ class DataManager {
         } else if let data = data, let response = response as? HTTPURLResponse {
             if response.statusCode == 200 {
                 do {
+                    print(data)
                     // Decode Json
                     let currencyData: CurrencyData = try JSONDecoder.decode(data: data)
                     completion(currencyData, nil)

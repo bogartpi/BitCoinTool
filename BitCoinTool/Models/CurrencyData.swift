@@ -12,7 +12,7 @@ struct CurrencyData {
 
     let timeUpdated: Date
     
-    let rate: Double
+    let rate: String
     let currencyCode: String
     let currencyDescription: String
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PriceController: UIViewController {
+class MainCurrencyController: UIViewController {
 
     // MARK: - IBOutlets
     
@@ -16,13 +16,16 @@ class PriceController: UIViewController {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var currencyContainerView: UIView!
     
+    // MARK: - Properties
+    
+    
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupView()
+        //setupView()
     }
     
     // MARK: - View Methods

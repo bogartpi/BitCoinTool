@@ -9,7 +9,6 @@
 import UIKit
 
 struct API {
-    // https://api.coindesk.com/v1/bpi/currentprice/nzd.json
     
     static let BaseURL = URL(string: "https://api.coindesk.com/v1/bpi/currentprice/")!
     static let currencyKey = "nzd"

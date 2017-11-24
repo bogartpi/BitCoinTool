@@ -31,21 +31,27 @@ class DataManager {
         // Create Data Task
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
+                
                 self.didFetchCurrencyData(data: data, response: response, error: error, completion: completion)
+                
             }
         }.resume()
     }
     
     private func didFetchCurrencyData(data: Data?, response: URLResponse?, error: Error?, completion: CurrencyDataCompletion) {
         if let _ = error {
+            
             completion(nil, DataManagerError.failedRequest)
+            
         } else if let data = data, let response = response as? HTTPURLResponse {
             if response.statusCode == 200 {
                 do {
                     print(data)
+                    
                     // Decode Json
                     let currencyData: CurrencyData = try JSONDecoder.decode(data: data)
                     completion(currencyData, nil)
+                    
                 } catch {
                     completion(nil, DataManagerError.invalidResponse)
                 }

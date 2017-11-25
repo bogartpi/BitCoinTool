@@ -8,27 +8,36 @@
 
 import UIKit
 
-protocol CurrencyControllerDelegate {
-    
-}
-
 class CurrencyController: MainCurrencyController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: CurrencyControllerDelegate?
-    
-    var exchangeData: CurrencyData? {
-        didSet {
-            print("Retrieved  Exchange Data")
-        }
-    }
+    var currencyName: [String] = []
+    var currenciesArray: [Currency] = []
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        fetchCurrency()
+    }
+    
+    func fetchCurrency() {
+        guard let urlString = API.BaseURL.absoluteString else { return }
+        guard let url = URL(string: urlString) else { return }
+        let jsonData = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        do {
+            let currencies = try decoder.decode([String: Currency].self, from: jsonData)
+            for currency in currencies {
+                self.currencyName.append(currency.key)
+                self.currenciesArray.append(currency.value)
+            }
+        } catch let err {
+            print(err.localizedDescription)
+        }
+        
     }
 
 }

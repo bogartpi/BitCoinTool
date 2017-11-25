@@ -10,11 +10,7 @@ import UIKit
 
 struct API {
     
-    static let BaseURL = URL(string: "https://api.coindesk.com/v1/bpi/currentprice/")!
-    static let currencyKey = "nzd"
+    static let BaseURL = NSURL(string: "https://blockchain.info/ticker")!
     
-    static var builtBaseUrl: URL {
-        return BaseURL.appendingPathComponent(currencyKey)
-    }
 }
 

@@ -37,7 +37,6 @@ class CurrencyController: MainCurrencyController {
         } catch let err {
             print(err.localizedDescription)
         }
-        
     }
 
 }
@@ -49,13 +48,20 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return currencyName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.reuseIdentifier, for: indexPath) as? CurrencyCell else {
             fatalError("Unexpected Table View Cell")
         }
+        
+        cell.currencyLabel.text = currencyName[indexPath.row]
+
+        
+        let currency = currenciesArray[indexPath.row]
+        cell.buyPrice.text = String(currency.buy)
+        cell.sellPrice.text = String(currency.sell)
         return cell
     }
     

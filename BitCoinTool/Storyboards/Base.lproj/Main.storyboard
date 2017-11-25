@@ -33,7 +33,7 @@
         <!--Exchange Rate-->
         <scene sceneID="Adp-1Z-caj">
             <objects>
-                <viewController id="ozd-qv-KQk" customClass="RootController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ozd-qv-KQk" customClass="MainCurrencyController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="swb-mF-N5q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

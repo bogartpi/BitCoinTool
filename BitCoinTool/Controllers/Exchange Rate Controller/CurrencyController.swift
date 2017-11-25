@@ -38,6 +38,14 @@ class CurrencyController: MainCurrencyController {
             print(err.localizedDescription)
         }
     }
+    
+    func configure(cell: CurrencyCell, at indexPath: IndexPath) {
+        let currency = currenciesArray[indexPath.row]
+        let name = currencyName[indexPath.row]
+        cell.buyPrice.text = String(currency.buy)
+        cell.sellPrice.text = String(currency.sell)
+        cell.currencyLabel.text = name
+    }
 
 }
 
@@ -55,13 +63,7 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.reuseIdentifier, for: indexPath) as? CurrencyCell else {
             fatalError("Unexpected Table View Cell")
         }
-        
-        cell.currencyLabel.text = currencyName[indexPath.row]
-
-        
-        let currency = currenciesArray[indexPath.row]
-        cell.buyPrice.text = String(currency.buy)
-        cell.sellPrice.text = String(currency.sell)
+        configure(cell: cell, at: indexPath)
         return cell
     }
     

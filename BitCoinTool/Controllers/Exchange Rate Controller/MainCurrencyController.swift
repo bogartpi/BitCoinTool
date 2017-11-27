@@ -24,12 +24,14 @@ class MainCurrencyController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //setupView()
         setupNavigationTitle()
     }
     
     func setupNavigationTitle() {
+        // remove gap between tableview and navbar
+        edgesForExtendedLayout = []
+        
         navigationItem.title = "Exchange Rate"
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.titleTextAttributes =

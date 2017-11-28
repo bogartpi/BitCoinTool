@@ -19,7 +19,6 @@ class CurrencyController: MainCurrencyController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         fetchCurrency()
     }
     

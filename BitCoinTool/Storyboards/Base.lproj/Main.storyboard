@@ -30,16 +30,16 @@
             </objects>
             <point key="canvasLocation" x="-658" y="330"/>
         </scene>
-        <!--Exchange Rate-->
+        <!--Main Currency Controller-->
         <scene sceneID="Adp-1Z-caj">
             <objects>
                 <viewController id="ozd-qv-KQk" customClass="MainCurrencyController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="swb-mF-N5q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJd-zO-6YC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <viewLayoutGuide key="safeArea" id="29f-pZ-EXg"/>
                                 <connections>
@@ -56,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ip2-dC-iYs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Exchange Rate" id="9db-2e-3TT"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="9db-2e-3TT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bxj-Y6-OJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -85,23 +85,23 @@
             <objects>
                 <viewController id="Obs-RZ-e9j" customClass="CurrencyController" customModule="BitCoinTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BaD-Vc-OZK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qht-lt-qVl">
-                                <rect key="frame" x="177" y="241" width="20" height="20"/>
+                                <rect key="frame" x="177" y="267" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxN-JR-L4F" userLabel="messageLabel">
-                                <rect key="frame" x="16" y="240.5" width="343" height="21"/>
+                                <rect key="frame" x="16" y="266.5" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIa-6P-nlf" userLabel="Currency Container View">
-                                <rect key="frame" x="0.0" y="20" width="375" height="482"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="534"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rmw-KP-oEc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="482"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="534"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <viewLayoutGuide key="safeArea" id="Ag7-K8-tZy"/>
                                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,8 +231,8 @@
                         <color key="badgeColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" largeTitles="YES" id="95R-yc-eqh">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="95R-yc-eqh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="onL-bt-dMi"/>

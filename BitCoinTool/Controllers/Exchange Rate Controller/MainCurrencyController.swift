@@ -26,6 +26,21 @@ class MainCurrencyController: UIViewController {
         super.viewDidLoad()
 
         //setupView()
+        setupNavigationTitle()
+    }
+    
+    func setupNavigationTitle() {
+        navigationItem.title = "Exchange Rate"
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
+            self.navigationController?.navigationBar.largeTitleTextAttributes =
+                [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
     }
     
     // MARK: - View Methods

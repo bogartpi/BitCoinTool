@@ -44,7 +44,7 @@ class CurrencyController: MainCurrencyController {
         let name = currencyName[indexPath.row]
         cell.buyPrice.text = String(currency.buy)
         cell.sellPrice.text = String(currency.sell)
-        cell.currencyLabel.text = name
+        cell.currencyLabel.text = "\(name) (\(currency.symbol))"
     }
 
 }

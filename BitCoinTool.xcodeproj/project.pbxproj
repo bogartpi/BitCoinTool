@@ -197,8 +197,8 @@
 		369BFB801FBF57190063C774 /* Exchange Rate Controller */ = {
 			isa = PBXGroup;
 			children = (
-				369BFB8C1FBF66950063C774 /* CurrencyController.swift */,
 				36BCCC631FC010880015005C /* MainCurrencyController.swift */,
+				369BFB8C1FBF66950063C774 /* CurrencyController.swift */,
 				36BCCC6C1FC031D60015005C /* Table View Cells */,
 			);
 			path = "Exchange Rate Controller";

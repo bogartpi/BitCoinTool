@@ -23,7 +23,7 @@ class CurrencyController: MainCurrencyController {
     }
     
     func fetchCurrency() {
-        guard let urlString = API.BaseURL.absoluteString else { return }
+        guard let urlString = API.RateURL.absoluteString else { return }
         guard let url = URL(string: urlString) else { return }
         let jsonData = try! Data(contentsOf: url)
         let decoder = JSONDecoder()

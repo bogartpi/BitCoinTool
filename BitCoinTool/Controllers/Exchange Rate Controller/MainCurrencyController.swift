@@ -28,10 +28,7 @@ class MainCurrencyController: UIViewController {
         setupNavigationTitle()
     }
     
-    func setupNavigationTitle() {
-        // remove gap between tableview and navbar
-        // edgesForExtendedLayout = []
-        
+    func setupNavigationTitle() {        
         navigationItem.title = "Exchange Rate"
         navigationController?.navigationBar.isTranslucent = false 
         navigationController?.navigationBar.titleTextAttributes =
@@ -49,7 +46,7 @@ class MainCurrencyController: UIViewController {
     
     func setupView() {
         // Configure Message Label
-        messageLabel.isHidden = true
+        messageLabel.isHidden = false
         
         // Configure Currency Container View
         currencyContainerView.isHidden = true

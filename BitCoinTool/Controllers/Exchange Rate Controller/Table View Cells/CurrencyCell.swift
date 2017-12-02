@@ -16,6 +16,7 @@ class CurrencyCell: UITableViewCell {
     
     // MARK: - Properties
     
+    @IBOutlet weak var currencyImage: UIImageView!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var buyPrice: UILabel!
     @IBOutlet weak var sellPrice: UILabel!

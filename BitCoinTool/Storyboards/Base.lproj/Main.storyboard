@@ -115,7 +115,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD ($)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbz-wy-Dc1">
-                                                            <rect key="frame" x="57" y="22" width="90" height="35"/>
+                                                            <rect key="frame" x="62" y="22" width="90" height="35"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="QMq-s7-z1m"/>
                                                                 <constraint firstAttribute="height" constant="35" id="wKa-S9-sfe"/>
@@ -166,12 +166,11 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1im-tt-nIP">
-                                                            <rect key="frame" x="20" y="29" width="25" height="20"/>
-                                                            <color key="backgroundColor" red="0.049696180559999997" green="0.67784288189999997" blue="0.35997178819999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1im-tt-nIP">
+                                                            <rect key="frame" x="20" y="26.5" width="30" height="25"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="20" id="GFP-4q-kfq"/>
-                                                                <constraint firstAttribute="width" constant="25" id="f8B-bw-EYd"/>
+                                                                <constraint firstAttribute="height" constant="25" id="GFP-4q-kfq"/>
+                                                                <constraint firstAttribute="width" constant="30" id="f8B-bw-EYd"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -190,6 +189,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="buyPrice" destination="xXd-2a-ccf" id="sO5-bE-wBE"/>
+                                                    <outlet property="currencyImage" destination="1im-tt-nIP" id="d60-Im-0y5"/>
                                                     <outlet property="currencyLabel" destination="jbz-wy-Dc1" id="jah-5Y-C2J"/>
                                                     <outlet property="sellPrice" destination="yuO-nE-ziW" id="gBG-7T-zU5"/>
                                                 </connections>

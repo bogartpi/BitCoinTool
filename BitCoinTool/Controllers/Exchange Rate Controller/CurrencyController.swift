@@ -41,6 +41,7 @@ class CurrencyController: MainCurrencyController {
     func configure(cell: CurrencyCell, at indexPath: IndexPath) {
         let currency = currenciesArray[indexPath.row]
         let name = currencyName[indexPath.row]
+        cell.currencyImage.image = UIImage(named: name)
         cell.buyPrice.text = String(currency.buy)
         cell.sellPrice.text = String(currency.sell)
         cell.currencyLabel.text = "\(name) (\(currency.symbol))"

@@ -12,37 +12,25 @@ class CurrencyController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var currencies = [Currency]()
-    
-    private let refreshControl = UIRefreshControl()
+    var currencies = [Currency]() {
+        didSet {
+            print(123)
+        }
+    }
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchCurrencyData()
-        setupNavigationTitle()
-    }
-    
-    func setupNavigationTitle() {
-        navigationItem.title = "Exchange Rate"
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white]
-        
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-            self.navigationItem.largeTitleDisplayMode = .always
-            self.navigationController?.navigationBar.largeTitleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor.white]
-        }
+        setupNavigationTitle(title: "Exchange Rate")
     }
     
     @objc func refreshCurrencyData(_ sender: Any) {
         fetchCurrencyData()
     }
     
-    func fetchCurrencyData() {
+    private func fetchCurrencyData() {
         DataManager.fetchCurrencyData(API.RateURL) { (currenciesFetched) in
             self.currencies = currenciesFetched
             print(self.currencies)
@@ -51,13 +39,11 @@ class CurrencyController: UIViewController {
     
     private func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
-        
         refreshControl.addTarget(self, action: #selector(refreshCurrencyData(_:)), for: .valueChanged)
-
         tableView.refreshControl = refreshControl
     }
     
-    func configure(cell: CurrencyCell, at indexPath: IndexPath) {
+    private func configure(cell: CurrencyCell, at indexPath: IndexPath) {
         let currency = currencies[indexPath.row]
         cell.currencyImage.image = UIImage(named: currency.name)
         cell.buyPrice.text = String(currency.buy)

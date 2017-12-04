@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct Currency: Codable {
+struct Currency: Decodable {
     
+    var name = ""
     let fifteenMin: Double?
     let last: Double?
     let buy: Double

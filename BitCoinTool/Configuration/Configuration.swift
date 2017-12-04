@@ -10,7 +10,7 @@ import UIKit
 
 struct API {
     
-    static let RateURL = NSURL(string: "https://blockchain.info/ticker")!
+    static let RateURL = URL(string: "https://blockchain.info/ticker")!
     
 }
 

@@ -8,46 +8,66 @@
 
 import UIKit
 
-class CurrencyController: MainCurrencyController {
+class CurrencyController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var currencyName: [String] = []
-    var currenciesArray: [Currency] = []
+    var currencies = [Currency]()
+    
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchCurrency()
+        fetchCurrencyData()
+        setupNavigationTitle()
     }
     
-    func fetchCurrency() {
-        guard let urlString = API.RateURL.absoluteString else { return }
-        guard let url = URL(string: urlString) else { return }
-        let jsonData = try! Data(contentsOf: url)
-        let decoder = JSONDecoder()
-        do {
-            let currencies = try decoder.decode([String: Currency].self, from: jsonData)
-            for currency in currencies {
-                self.currencyName.append(currency.key)
-                self.currenciesArray.append(currency.value)
-            }
-        } catch let err {
-            print(err.localizedDescription)
+    func setupNavigationTitle() {
+        navigationItem.title = "Exchange Rate"
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
+            self.navigationController?.navigationBar.largeTitleTextAttributes =
+                [NSAttributedStringKey.foregroundColor: UIColor.white]
         }
     }
     
+    @objc func refreshCurrencyData(_ sender: Any) {
+        fetchCurrencyData()
+    }
+    
+    func fetchCurrencyData() {
+        DataManager.fetchCurrencyData(API.RateURL) { (currenciesFetched) in
+            self.currencies = currenciesFetched
+            print(self.currencies)
+        }
+    }
+    
+    private func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(refreshCurrencyData(_:)), for: .valueChanged)
+
+        tableView.refreshControl = refreshControl
+    }
+    
     func configure(cell: CurrencyCell, at indexPath: IndexPath) {
-        let currency = currenciesArray[indexPath.row]
-        let name = currencyName[indexPath.row]
-        cell.currencyImage.image = UIImage(named: name)
+        let currency = currencies[indexPath.row]
+        cell.currencyImage.image = UIImage(named: currency.name)
         cell.buyPrice.text = String(currency.buy)
         cell.sellPrice.text = String(currency.sell)
-        cell.currencyLabel.text = "\(name) (\(currency.symbol))"
+        cell.currencyLabel.text = "\(currency.name) (\(currency.symbol))"
     }
 
 }
+
+// MARK: - Table View Methods
 
 extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
     
@@ -56,7 +76,7 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyName.count
+        return currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,6 +84,7 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Unexpected Table View Cell")
         }
         configure(cell: cell, at: indexPath)
+        
         return cell
     }
     

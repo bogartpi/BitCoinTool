@@ -542,6 +542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7CAT7V5Y6M;
 				INFOPLIST_FILE = BitCoinTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bogart.BitCoinTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -557,6 +558,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7CAT7V5Y6M;
 				INFOPLIST_FILE = BitCoinTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = bogart.BitCoinTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";

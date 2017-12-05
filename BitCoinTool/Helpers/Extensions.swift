@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    
+public extension UIViewController {
     func setupNavigationTitle(title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.isTranslucent = false
@@ -24,7 +23,9 @@ extension UIViewController {
                 [NSAttributedStringKey.foregroundColor: UIColor.white]
         }
     }
-    
+}
+
+public extension UIViewController {
     func checkReachability() -> Bool {
         if currentReachabilityStatus == .reachableViaWiFi || currentReachabilityStatus == .reachableViaWWAN{
             print("connected")
@@ -34,12 +35,19 @@ extension UIViewController {
             return false
         }
     }
-    
+}
+
+public extension UIViewController {
     func showAlertWarning(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "Ok", style: .cancel)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true)
     }
-    
+}
+
+public extension UIColor {
+    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
 }

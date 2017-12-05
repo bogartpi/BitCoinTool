@@ -37,7 +37,6 @@ class CurrencyController: UIViewController {
     }
     
     private func fetchCurrency() {
-        
         DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
             if let _ = error {
                 self.refreshControl.endRefreshing()
@@ -50,12 +49,12 @@ class CurrencyController: UIViewController {
                 self.currencies = currencies
             }
         }
-        
-        DispatchQueue.main.async {
-            //self.refreshControl.endRefreshing()
-            self.tableView.reloadData()
-        }
     }
+}
+
+// MARK: - Set View Methods
+
+extension CurrencyController {
     
     private func configure(cell: CurrencyCell, at indexPath: IndexPath) {
         guard let currency = currencies?[indexPath.row] else { return }
@@ -64,12 +63,6 @@ class CurrencyController: UIViewController {
         cell.sellPrice.text = String(currency.sell)
         cell.currencyLabel.text = "\(currency.name) (\(currency.symbol))"
     }
-
-}
-
-// MARK: - Set View Methods
-
-extension CurrencyController {
     
     private func setupView() {
         setupNavigationTitle(title: "Exchange Rate")

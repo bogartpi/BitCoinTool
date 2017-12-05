@@ -9,41 +9,34 @@
 import Foundation
 
 enum DataManagerError: Error {
-    case unknown
     case failedRequest
-    case invalidResponse
+    case unknownError
 }
 
 final class DataManager {
     
-    typealias CurrencyDataCompletion = (Currency?, DataManagerError?) -> ()
-    
-    private let baseURL: URL
-    
-    init(baseURL: URL) {
-        self.baseURL = baseURL
-    }
-    
-    static func fetchCurrencyData(_ url: URL, callback: @escaping (([Currency]) -> Void)) {
-        
+    static func fetchCurrencyData(_ url: URL, completion: @escaping (([Currency]?, DataManagerError?) -> Void)) {
         var currenciesFetched = [Currency]()
         
-        let json = try! Data(contentsOf: url)
-        let decoder = JSONDecoder()
-        do {
-            let currenciesData = try decoder.decode([String: Currency].self, from: json)
-            for key in currenciesData.keys {
-                guard var currency = currenciesData[key] else { return }
-                currency.name = key
-                currenciesFetched.append(currency)
+        if let json = try? Data(contentsOf: url) {
+            
+            let decoder = JSONDecoder()
+            do {
+                let currenciesData = try decoder.decode([String: Currency].self, from: json)
+                for key in currenciesData.keys {
+                    guard var currency = currenciesData[key] else { return }
+                    currency.name = key
+                    currenciesFetched.append(currency)
+                }
+                
+                completion(currenciesFetched, nil)
+                
+            } catch let err {
+                print(err.localizedDescription)
             }
-            
-            callback(currenciesFetched)
-            
-        } catch let err {
-            print(err.localizedDescription)
+        } else {
+            completion(nil, DataManagerError.failedRequest)
         }
     }
-    
-    
+
 }

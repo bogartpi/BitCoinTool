@@ -13,7 +13,6 @@ class ConverterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
 
 }

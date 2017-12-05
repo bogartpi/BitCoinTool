@@ -19,6 +19,7 @@
 		369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* CurrencyController.swift */; };
 		36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DB1FC06B2800C6FE85 /* Configuration.swift */; };
 		36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DD1FC0796F00C6FE85 /* Currency.swift */; };
+		36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility.swift */; };
 		36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* CurrencyCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		369BFB8C1FBF66950063C774 /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		36A493DB1FC06B2800C6FE85 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		36A493DD1FC0796F00C6FE85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		36A6F1021FD61DD800D94139 /* Reachibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachibility.swift; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				361C52011FD5429400B48ECA /* Extensions.swift */,
+				36A6F1021FD61DD800D94139 /* Reachibility.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
 				361C52021FD5429400B48ECA /* Extensions.swift in Sources */,
 				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
+				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,

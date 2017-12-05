@@ -30,14 +30,31 @@ class CurrencyController: UIViewController {
         fetchCurrency()
     }
     
+    private func updateView() {
+        self.tableView.reloadData()
+        tableView.refreshControl?.endRefreshing()
+        print("updated")
+    }
+    
     private func fetchCurrency() {
-        DataManager.fetchCurrencyData(API.RateURL) { (currenciesFetched) in
-            self.currencies = currenciesFetched
+        
+        DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
+            if let _ = error {
+                self.refreshControl.endRefreshing()
+                if !self.checkReachability() {
+                    print("Please check your internet connection")
+                } else {
+                    print("Ops.. Something gone wrong :(")
+                }
+            } else {
+                self.currencies = currencies
+            }
         }
+        
         DispatchQueue.main.async {
+            //self.refreshControl.endRefreshing()
             self.tableView.reloadData()
         }
-        refreshControl.endRefreshing()
     }
     
     private func configure(cell: CurrencyCell, at indexPath: IndexPath) {
@@ -50,15 +67,9 @@ class CurrencyController: UIViewController {
 
 }
 
-// MARK: - View Methods
+// MARK: - Set View Methods
 
 extension CurrencyController {
-    
-    private func updateView() {
-        tableView.refreshControl?.endRefreshing()
-        self.tableView.reloadData()
-        print("updated")
-    }
     
     private func setupView() {
         setupNavigationTitle(title: "Exchange Rate")

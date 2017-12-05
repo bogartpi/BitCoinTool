@@ -25,4 +25,14 @@ extension UIViewController {
         }
     }
     
+    func checkReachability() -> Bool {
+        if currentReachabilityStatus == .reachableViaWiFi || currentReachabilityStatus == .reachableViaWWAN{
+            print("connected")
+            return true
+        } else {
+            print("not connected")
+            return false
+        }
+    }
+    
 }

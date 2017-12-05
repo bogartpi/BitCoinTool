@@ -15,7 +15,9 @@ enum DataManagerError: Error {
 
 final class DataManager {
     
-    static func fetchCurrencyData(_ url: URL, completion: @escaping (([Currency]?, DataManagerError?) -> Void)) {
+    typealias CurrencyDataCompletion = ([Currency]?, DataManagerError?) -> ()
+    
+    static func fetchCurrencyData(_ url: URL, completion: @escaping (CurrencyDataCompletion)) {
         var currenciesFetched = [Currency]()
         
         if let json = try? Data(contentsOf: url) {

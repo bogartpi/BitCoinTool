@@ -35,4 +35,11 @@ extension UIViewController {
         }
     }
     
+    func showAlertWarning(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Ok", style: .cancel)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true)
+    }
+    
 }

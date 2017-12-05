@@ -41,9 +41,9 @@ class CurrencyController: UIViewController {
             if let _ = error {
                 self.refreshControl.endRefreshing()
                 if !self.checkReachability() {
-                    print("Please check your internet connection")
+                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection")
                 } else {
-                    print("Ops.. Something gone wrong :(")
+                    self.showAlertWarning(title: "Ops.. Something gone wrong :(", message: "Please try again later")
                 }
             } else {
                 self.currencies = currencies

@@ -32,19 +32,19 @@ class CurrencyController: UIViewController {
     
     private func updateView() {
         self.tableView.reloadData()
-        tableView.refreshControl?.endRefreshing()
+        self.tableView.refreshControl?.endRefreshing()
         print("updated")
     }
     
     private func fetchCurrency() {
         DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
             if let _ = error {
-                self.refreshControl.endRefreshing()
                 if !self.checkReachability() {
-                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection")
+                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection and try again")
                 } else {
                     self.showAlertWarning(title: "Ops.. Something gone wrong :(", message: "Please try again later")
                 }
+                self.tableView.refreshControl?.endRefreshing()
             } else {
                 self.currencies = currencies
             }

@@ -12,7 +12,7 @@ class ConverterController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupNavigationTitle(title: "Converter")
     }
 
 }

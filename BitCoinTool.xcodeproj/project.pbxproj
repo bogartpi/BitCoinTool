@@ -21,6 +21,7 @@
 		36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DD1FC0796F00C6FE85 /* Currency.swift */; };
 		36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility.swift */; };
 		36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* CurrencyCell.swift */; };
+		36F43F951FD635790084163B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F43F941FD635790084163B /* StatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		36A493DD1FC0796F00C6FE85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		36A6F1021FD61DD800D94139 /* Reachibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachibility.swift; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		36F43F941FD635790084163B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				369BFB801FBF57190063C774 /* Exchange Rate Controller */,
+				36F43F931FD635510084163B /* Stats Controller */,
 				369BFB811FBF57420063C774 /* Converter Controller */,
 			);
 			path = Controllers;
@@ -233,6 +236,14 @@
 				36BCCC6D1FC032100015005C /* CurrencyCell.swift */,
 			);
 			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		36F43F931FD635510084163B /* Stats Controller */ = {
+			isa = PBXGroup;
+			children = (
+				36F43F941FD635790084163B /* StatViewController.swift */,
+			);
+			path = "Stats Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +388,7 @@
 				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
+				36F43F951FD635790084163B /* StatViewController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

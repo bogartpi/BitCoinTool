@@ -10,6 +10,8 @@
 		360532911FBDC32A00CE145B /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360532901FBDC32A00CE145B /* ConverterController.swift */; };
 		361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C51FD1FD4D9A100B48ECA /* DataManger.swift */; };
 		361C52021FD5429400B48ECA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C52011FD5429400B48ECA /* Extensions.swift */; };
+		363576B71FD7412000752C12 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B61FD7412000752C12 /* Constraints.swift */; };
+		363576B91FD7419B00752C12 /* SafeAreaLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B81FD7419B00752C12 /* SafeAreaLayout.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
 		367E4E0E1FBD912C0013E89F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0C1FBD912C0013E89F /* Main.storyboard */; };
 		367E4E101FBD912C0013E89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0F1FBD912C0013E89F /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		360532901FBDC32A00CE145B /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		361C51FD1FD4D9A100B48ECA /* DataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManger.swift; sourceTree = "<group>"; };
 		361C52011FD5429400B48ECA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		363576B61FD7412000752C12 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		363576B81FD7419B00752C12 /* SafeAreaLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaLayout.swift; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367E4E0D1FBD912C0013E89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			children = (
 				361C52011FD5429400B48ECA /* Extensions.swift */,
 				36A6F1021FD61DD800D94139 /* Reachibility.swift */,
+				363576B61FD7412000752C12 /* Constraints.swift */,
+				363576B81FD7419B00752C12 /* SafeAreaLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -387,6 +393,8 @@
 				36F43F971FD653C00084163B /* Market.swift in Sources */,
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
 				369BFB8D1FBF66950063C774 /* CurrencyController.swift in Sources */,
+				363576B71FD7412000752C12 /* Constraints.swift in Sources */,
+				363576B91FD7419B00752C12 /* SafeAreaLayout.swift in Sources */,
 				361C52021FD5429400B48ECA /* Extensions.swift in Sources */,
 				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
 				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,

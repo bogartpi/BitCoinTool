@@ -12,7 +12,14 @@ class StatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupNavigationTitle(title: "Stats")
+        fetchMarketData()
     }
+    
+    private func fetchMarketData() {
+        DataManager.fetchMarketData(API.StatURL!) { (market, error) in
+            print(market)
+        }
+    }
+    
 }

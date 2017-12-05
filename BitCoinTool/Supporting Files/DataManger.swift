@@ -16,6 +16,7 @@ enum DataManagerError: Error {
 final class DataManager {
     
     typealias CurrencyDataCompletion = ([Currency]?, DataManagerError?) -> ()
+    typealias MarketDataCompletion = (Market?, DataManagerError?) -> ()
     
     static func fetchCurrencyData(_ url: URL, completion: @escaping (CurrencyDataCompletion)) {
         var currenciesFetched = [Currency]()
@@ -33,6 +34,24 @@ final class DataManager {
                 
                 completion(currenciesFetched, nil)
                 
+            } catch let err {
+                print(err.localizedDescription)
+            }
+        } else {
+            completion(nil, DataManagerError.failedRequest)
+        }
+    }
+    
+    static func fetchMarketData(_ url: URL, completion: @escaping (MarketDataCompletion)) {
+        var marketsFetched: Market
+        
+        if let json = try? Data(contentsOf: url) {
+            let decoder = JSONDecoder()
+            
+            do {
+                let marketsData = try decoder.decode(Market.self, from: json)
+                marketsFetched = marketsData
+                completion(marketsFetched, nil)
             } catch let err {
                 print(err.localizedDescription)
             }

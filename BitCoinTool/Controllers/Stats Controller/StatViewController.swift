@@ -12,6 +12,8 @@ class StatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var markets = [Market]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationTitle(title: "Stats")
@@ -19,17 +21,34 @@ class StatViewController: UIViewController {
         fetchMarketData()
     }
     
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self 
-        tableView.register(StatCell.self, forCellReuseIdentifier: StatCell.reuseIdentifier)
-        tableView.showsVerticalScrollIndicator = false
+    private func fetchMarketData() {
+        DataManager.fetchMarketData([API.MarketURL, API.TransactionURL, API.CapitalizationURL]) { (markets, error) in
+            if let _ = error {
+                if !self.checkReachability() {
+                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection and try again")
+                } else {
+                    self.showAlertWarning(title: "Ops.. Something gone wrong :(", message: "Please try again later")
+                }
+            }
+            
+            if let markets = markets {
+                self.markets = markets
+            }
+        }
     }
     
-    private func fetchMarketData() {
-        DataManager.fetchMarketData(API.StatURL!) { (market, error) in
-            print(market ?? "")
-        }
+}
+
+// MARK: - Setup Views
+
+extension StatViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(StatCell.self, forCellReuseIdentifier: StatCell.reuseIdentifier)
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
     }
     
 }
@@ -43,11 +62,14 @@ extension StatViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return markets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
+        let market = markets[indexPath.row]
+        cell.chartName.text = market.name
+        cell.chartDescription.text = market.description
         return cell
     }
     

@@ -16,13 +16,11 @@ enum DataManagerError: Error {
 final class DataManager {
     
     typealias CurrencyDataCompletion = ([Currency]?, DataManagerError?) -> ()
-    typealias MarketDataCompletion = (Market?, DataManagerError?) -> ()
+    typealias MarketDataCompletion = ([Market]?, DataManagerError?) -> ()
     
     static func fetchCurrencyData(_ url: URL, completion: @escaping (CurrencyDataCompletion)) {
         var currenciesFetched = [Currency]()
-        
         if let json = try? Data(contentsOf: url) {
-            
             let decoder = JSONDecoder()
             do {
                 let currenciesData = try decoder.decode([String: Currency].self, from: json)
@@ -42,21 +40,21 @@ final class DataManager {
         }
     }
     
-    static func fetchMarketData(_ url: URL, completion: @escaping (MarketDataCompletion)) {
-        var marketsFetched: Market
-        
-        if let json = try? Data(contentsOf: url) {
-            let decoder = JSONDecoder()
-            
-            do {
-                let marketsData = try decoder.decode(Market.self, from: json)
-                marketsFetched = marketsData
-                completion(marketsFetched, nil)
-            } catch let err {
-                print(err.localizedDescription)
+    static func fetchMarketData(_ urlArray: [URL], completion: @escaping (MarketDataCompletion)) {
+        var marketsFetched = [Market]()
+        for url in urlArray {
+            if let json = try? Data(contentsOf: url) {
+                let decoder = JSONDecoder()
+                do {
+                    let marketsData = try decoder.decode(Market.self, from: json)
+                    marketsFetched.append(marketsData)
+                    completion(marketsFetched, nil)
+                } catch let err {
+                    print(err.localizedDescription)
+                }
+            } else {
+                completion(nil, DataManagerError.failedRequest)
             }
-        } else {
-            completion(nil, DataManagerError.failedRequest)
         }
     }
 

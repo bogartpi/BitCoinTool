@@ -18,11 +18,11 @@ struct Market: Codable {
 
 struct Value: Codable {
     
-    var date: Double
-    var price: Double
+    var dateX: Int
+    var valueY: Double
     
     enum CodingKeys: String, CodingKey {
-        case date = "x"
-        case price = "y"
+        case dateX = "x"
+        case valueY = "y"
     }
 }

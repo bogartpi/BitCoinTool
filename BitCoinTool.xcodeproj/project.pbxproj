@@ -24,7 +24,7 @@
 		36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility.swift */; };
 		36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* CurrencyCell.swift */; };
 		36DCC4DF1FD7BB0E00161C7B /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCC4DE1FD7BB0E00161C7B /* StatCell.swift */; };
-		36DCC4E21FD7F04700161C7B /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCC4E11FD7F04700161C7B /* ChartView.swift */; };
+		36DCC4E21FD7F04700161C7B /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCC4E11FD7F04700161C7B /* LineChart.swift */; };
 		36F43F951FD635790084163B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F43F941FD635790084163B /* StatViewController.swift */; };
 		36F43F971FD653C00084163B /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F43F961FD653C00084163B /* Market.swift */; };
 		5409D77D65D9DF1D5AE8E078 /* Pods_BitCoinTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CE0BE347CF235A7B54738B /* Pods_BitCoinTool.framework */; };
@@ -74,7 +74,7 @@
 		36A6F1021FD61DD800D94139 /* Reachibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachibility.swift; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		36DCC4DE1FD7BB0E00161C7B /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
-		36DCC4E11FD7F04700161C7B /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		36DCC4E11FD7F04700161C7B /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		36F43F941FD635790084163B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		36F43F961FD653C00084163B /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		71A59221AE8C8F09B2DC3A8E /* Pods-BitCoinToolUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinToolUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitCoinToolUITests/Pods-BitCoinToolUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		36DCC4E01FD7F01C00161C7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				36DCC4E11FD7F04700161C7B /* ChartView.swift */,
+				36DCC4E11FD7F04700161C7B /* LineChart.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -621,7 +621,7 @@
 				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
-				36DCC4E21FD7F04700161C7B /* ChartView.swift in Sources */,
+				36DCC4E21FD7F04700161C7B /* LineChart.swift in Sources */,
 				36F43F951FD635790084163B /* StatViewController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,
 				36DCC4DF1FD7BB0E00161C7B /* StatCell.swift in Sources */,

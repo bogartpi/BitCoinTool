@@ -10,14 +10,12 @@ import UIKit
 
 class StatViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    
     var markets = [Market]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationTitle(title: "Stats")
-        setupTableView()
+        setupCollectionView()
         fetchMarketData()
     }
     
@@ -43,37 +41,15 @@ class StatViewController: UIViewController {
 
 extension StatViewController {
     
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(StatCell.self, forCellReuseIdentifier: StatCell.reuseIdentifier)
-        tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = .none
+    func setupCollectionView() {
+
     }
     
 }
 
 // MARK: - Table View Methods
 
-extension StatViewController: UITableViewDelegate, UITableViewDataSource {
+extension StatViewController {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return markets.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
-        let market = markets[indexPath.row]
-        cell.chartName.text = market.name
-        cell.chartDescription.text = market.description
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
+
 }

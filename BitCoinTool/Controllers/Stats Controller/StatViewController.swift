@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import ScalingCarousel
 
 class StatViewController: UIViewController {
     
     var markets = [Market]()
+    
+    var carouselCollectionView: ScalingCarouselView = {
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        let scalingCarousel = ScalingCarouselView(withFrame: frame, andInset: 25)
+        scalingCarousel.backgroundColor = .clear
+        return scalingCarousel
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +50,33 @@ class StatViewController: UIViewController {
 extension StatViewController {
     
     func setupCollectionView() {
-
+        carouselCollectionView.register(CarouselCell.self, forCellWithReuseIdentifier: CarouselCell.reuseIdentifier)
+        carouselCollectionView.delegate = self
+        carouselCollectionView.dataSource = self
+        carouselCollectionView.showsHorizontalScrollIndicator = false
+        view.addSubview(carouselCollectionView)
+        carouselCollectionView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.safeBottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0)
     }
     
 }
 
-// MARK: - Table View Methods
+// MARK: - Collection View Methods
 
-extension StatViewController {
+extension StatViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return markets.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.reuseIdentifier, for: indexPath)
+        
+        if let carouselCell = cell as? CarouselCell {
+            // display data
+            
+        }
+        
+        return cell
+    }
 
 }

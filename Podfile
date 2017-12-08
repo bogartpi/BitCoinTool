@@ -7,6 +7,7 @@ target 'BitCoinTool' do
 
   # Pods for BitCoinTool
 pod 'Charts'
+pod 'ScalingCarousel'
 
   target 'BitCoinToolTests' do
     inherit! :search_paths

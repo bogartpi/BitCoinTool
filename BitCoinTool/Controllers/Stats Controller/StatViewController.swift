@@ -70,10 +70,18 @@ extension StatViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCell.reuseIdentifier, for: indexPath)
+        let market = markets[indexPath.item]
+        
+        guard let marketValues = market.values.last else { fatalError() }
+        print(marketValues.valueY)
+        
         
         if let carouselCell = cell as? CarouselCell {
-            // display data
-            
+            carouselCell.marketName.text = market.name
+            carouselCell.marketValue.text = String(marketValues.valueY)
+            carouselCell.lastUpdated.text = String("Last updated on \(marketValues.dateX)")
+            carouselCell.marketDescription.text = market.description
+            return carouselCell
         }
         
         return cell

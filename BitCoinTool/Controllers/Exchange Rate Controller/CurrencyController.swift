@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyController: UIViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet weak var tableView: UITableView!
     
     var refreshControl: UIRefreshControl!
@@ -20,6 +22,8 @@ class CurrencyController: UIViewController {
         }
     }
 
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -30,11 +34,41 @@ class CurrencyController: UIViewController {
         fetchCurrency()
     }
     
+    
+    // MARK: - Setup View Methods
+    
+    private func configure(cell: CurrencyCell, at indexPath: IndexPath) {
+        guard let currency = currencies?[indexPath.row] else { return }
+        cell.currencyImage.image = UIImage(named: currency.name)
+        cell.buyPrice.text = String(currency.buy)
+        cell.sellPrice.text = String(currency.sell)
+        cell.currencyLabel.text = "\(currency.name) (\(currency.symbol))"
+    }
+    
+    private func setupView() {
+        setupNavigationTitle(title: "Exchange Rate")
+        setupTableView()
+        setupRefreshControl()
+    }
+    
+    private func setupTableView() {
+        tableView.separatorInset = UIEdgeInsets.zero
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.white
+        refreshControl.addTarget(self, action: #selector(didRefresh(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
     private func updateView() {
         self.tableView.reloadData()
         self.tableView.refreshControl?.endRefreshing()
         print("updated")
     }
+    
+    // MARK: - Fetching Data
     
     private func fetchCurrency() {
         DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
@@ -52,36 +86,6 @@ class CurrencyController: UIViewController {
     }
 }
 
-// MARK: - Set View Methods
-
-extension CurrencyController {
-    
-    private func configure(cell: CurrencyCell, at indexPath: IndexPath) {
-        guard let currency = currencies?[indexPath.row] else { return }
-        cell.currencyImage.image = UIImage(named: currency.name)
-        cell.buyPrice.text = String(currency.buy)
-        cell.sellPrice.text = String(currency.sell)
-        cell.currencyLabel.text = "\(currency.name) (\(currency.symbol))"
-    }
-    
-    private func setupView() {
-        setupNavigationTitle(title: "Exchange Rate")
-        setupTableView()
-        setupRefreshControl()
-    }
-
-    private func setupTableView() {
-        tableView.separatorInset = UIEdgeInsets.zero
-    }
-    
-    private func setupRefreshControl() {
-        refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor.white
-        refreshControl.addTarget(self, action: #selector(didRefresh(_:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
-    }
-
-}
 
 // MARK: - Table View Methods
 
@@ -109,15 +113,3 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
         return 80
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

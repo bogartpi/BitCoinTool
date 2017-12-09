@@ -16,7 +16,7 @@ class CarouselCell: ScalingCarouselCell {
     let marketName: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textAlignment = .center
         label.numberOfLines = 3
         return label
@@ -25,7 +25,7 @@ class CarouselCell: ScalingCarouselCell {
     let marketValue: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.font = UIFont.boldSystemFont(ofSize: 45)
         label.textAlignment = .center
         return label
     }()
@@ -33,7 +33,7 @@ class CarouselCell: ScalingCarouselCell {
     let lastUpdated: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 1
         label.textAlignment = .center
         return label
@@ -42,8 +42,8 @@ class CarouselCell: ScalingCarouselCell {
     let marketDescription: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.numberOfLines = 3
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 5
         label.textAlignment = .center
         return label
     }()
@@ -61,15 +61,21 @@ class CarouselCell: ScalingCarouselCell {
     }
     
     func setupViews() {
-        mainView.addSubview(marketName)
-        mainView.addSubview(marketValue)
-        mainView.addSubview(lastUpdated)
-        mainView.addSubview(marketDescription)
+        let stackView = UIStackView(arrangedSubviews: [marketName,
+                                                       marketValue,
+                                                       lastUpdated,
+                                                       marketDescription])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .fillProportionally
         
-        marketName.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 30)
-        marketValue.anchor(top: marketName.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 50)
-        lastUpdated.anchor(top: marketValue.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 18)
-        marketDescription.anchor(top: lastUpdated.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 60)
+        self.addSubview(stackView)
+        stackView.anchor(top: topAnchor,
+                         left: leftAnchor,
+                         bottom: bottomAnchor,
+                         right: rightAnchor,
+                         paddingTop: 10, paddingLeft: 20,
+                         paddingBottom: 10, paddingRight: 20)
     }
     
     required init?(coder aDecoder: NSCoder) {

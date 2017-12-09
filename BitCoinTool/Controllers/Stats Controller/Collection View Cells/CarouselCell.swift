@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import ScalingCarousel
 
-class CarouselCell: ScalingCarouselCell {
+class CarouselCell: UICollectionViewCell {
     
     static let reuseIdentifier = "CarouselCell"
     
@@ -50,14 +49,7 @@ class CarouselCell: ScalingCarouselCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupCarousel()
         setupViews()
-    }
-    
-    func setupCarousel() {
-        mainView = UIView(frame: contentView.bounds)
-        contentView.addSubview(mainView)
-        mainView.backgroundColor = .darkGray
     }
     
     func setupViews() {

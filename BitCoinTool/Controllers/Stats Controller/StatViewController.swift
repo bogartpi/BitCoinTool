@@ -19,14 +19,7 @@ class StatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationTitle(title: "Stats")
-        setupCollectionViews()
         fetchMarketData()
-    }
-    
-    // MARK: - Setup Collection Views
-    
-    func setupCollectionViews() {
-
     }
     
     // MARK: - Fetching Data

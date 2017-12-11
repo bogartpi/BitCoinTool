@@ -14,12 +14,25 @@ class StatViewController: UIViewController {
     
     var markets = [Market]()
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupCollectionView()
         setupNavigationTitle(title: "Stats")
         fetchMarketData()
+    }
+    
+    // MARK: - Setup Views
+    
+    func setupCollectionView() {
+        collectionView.backgroundColor = .white
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
+        collectionView.isPagingEnabled = true
     }
     
     // MARK: - Fetching Data
@@ -43,7 +56,68 @@ class StatViewController: UIViewController {
             }
         }
     }
+}
+
+extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return markets.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let currentPageIndex = Int(targetContentOffset.pointee.x / view.frame.width)
+        print(currentPageIndex)
+    }
+}
+
+class StatCell: UICollectionViewCell {
+    
+    static let reuseIdentifier = "statCell"
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    func setup() {
+        backgroundColor = .red
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

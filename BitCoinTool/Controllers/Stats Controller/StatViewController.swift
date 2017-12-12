@@ -14,6 +14,31 @@ class StatViewController: UIViewController {
     
     var markets = [Market]()
     
+    private let prevButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("PREV", for: .normal)
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("NEXT", for: .normal)
+        button.setTitleColor(UIColor.darkGray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 3
+        pc.pageIndicatorTintColor = .gray
+        pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        return pc
+    }()
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - View Life Cycle
@@ -23,16 +48,56 @@ class StatViewController: UIViewController {
         
         setupCollectionView()
         setupNavigationTitle(title: "Stats")
+        setupBottomControls()
         fetchMarketData()
+        setupActionsForButtons()
     }
     
     // MARK: - Setup Views
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
         collectionView.isPagingEnabled = true
+    }
+    
+    private func setupBottomControls() {
+        let bottomStackView = UIStackView(arrangedSubviews: [prevButton, pageControl, nextButton])
+        bottomStackView.axis = .horizontal
+        bottomStackView.distribution = .fillEqually
+        bottomStackView.spacing = 10
+        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(bottomStackView)
+        
+        NSLayoutConstraint.activate([
+            bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            bottomStackView.heightAnchor.constraint(equalToConstant: 50)
+            ])
+    }
+    
+    // MARK: Setup Actions
+    
+    private func setupActionsForButtons() {
+        prevButton.addTarget(self, action: #selector(previousPressed(_:)), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextPressed(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func previousPressed(_ sender: UIButton) {
+        let nextIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc private func nextPressed(_ sender: UIButton) {
+        let nextIndex = min(pageControl.currentPage + 1, 2)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     // MARK: - Fetching Data
@@ -79,7 +144,7 @@ extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let currentPageIndex = Int(targetContentOffset.pointee.x / view.frame.width)
-        print(currentPageIndex)
+        pageControl.currentPage = currentPageIndex
     }
 }
 
@@ -94,7 +159,7 @@ class StatCell: UICollectionViewCell {
     }
     
     func setup() {
-        backgroundColor = .red
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

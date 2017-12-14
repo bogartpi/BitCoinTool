@@ -42,7 +42,7 @@ class CurrencyController: UIViewController {
         cell.currencyImage.image = UIImage(named: currency.name)
         cell.buyPrice.text = String(currency.buy)
         cell.sellPrice.text = String(currency.sell)
-        cell.currencyLabel.text = "\(currency.name) (\(currency.symbol))"
+        cell.currencyLabel.text = "\(currency.name)"
     }
     
     private func setupView() {
@@ -105,7 +105,6 @@ extension CurrencyController: UITableViewDataSource, UITableViewDelegate {
             fatalError("Unexpected Table View Cell")
         }
         configure(cell: cell, at: indexPath)
-        
         return cell
     }
     

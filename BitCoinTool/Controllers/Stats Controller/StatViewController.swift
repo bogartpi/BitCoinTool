@@ -43,9 +43,13 @@ class StatViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupCollectionView()
         setupNavigationTitle(title: "Stats")
         setupBottomControls()
@@ -63,7 +67,7 @@ class StatViewController: UIViewController {
     }
     
     private func setupBottomControls() {
-        let bottomStackView = UIStackView(arrangedSubviews: [prevButton, pageControl, nextButton])
+        let bottomStackView = UIStackView(arrangedSubviews: [pageControl])
         bottomStackView.axis = .horizontal
         bottomStackView.distribution = .fillEqually
         bottomStackView.spacing = 10
@@ -73,9 +77,9 @@ class StatViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bottomStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bottomStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bottomStackView.heightAnchor.constraint(equalToConstant: 50)
+            bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bottomStackView.heightAnchor.constraint(equalToConstant: 40),
+            bottomStackView.widthAnchor.constraint(equalToConstant: 60)
             ])
     }
     
@@ -131,6 +135,10 @@ extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
+        cell.marketName.text = markets[indexPath.item].name
+        cell.marketDescription.text = markets[indexPath.item].description
+        cell.lastUpdated.text = "Last updated on 12 December 21:00 PM"
+        cell.marketValue.text = "$ 16599"
         return cell
     }
     
@@ -139,7 +147,7 @@ extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
+        return  CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -147,42 +155,5 @@ extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSour
         pageControl.currentPage = currentPageIndex
     }
 }
-
-class StatCell: UICollectionViewCell {
-    
-    static let reuseIdentifier = "statCell"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setup()
-    }
-    
-    func setup() {
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

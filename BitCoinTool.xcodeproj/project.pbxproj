@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		360532911FBDC32A00CE145B /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360532901FBDC32A00CE145B /* ConverterController.swift */; };
-		361866381FDA0B9900BDC765 /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361866371FDA0B9900BDC765 /* CarouselCell.swift */; };
+		361866381FDA0B9900BDC765 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361866371FDA0B9900BDC765 /* StatCell.swift */; };
 		361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C51FD1FD4D9A100B48ECA /* DataManger.swift */; };
 		361C52021FD5429400B48ECA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C52011FD5429400B48ECA /* Extensions.swift */; };
 		363576B71FD7412000752C12 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B61FD7412000752C12 /* Constraints.swift */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		14A23A58A7CD770C807E86BD /* Pods_BitCoinToolUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinToolUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		360532901FBDC32A00CE145B /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
-		361866371FDA0B9900BDC765 /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		361866371FDA0B9900BDC765 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		361C51FD1FD4D9A100B48ECA /* DataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManger.swift; sourceTree = "<group>"; };
 		361C52011FD5429400B48ECA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		363576B61FD7412000752C12 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 		36DCC4DD1FD7BAF200161C7B /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				361866371FDA0B9900BDC765 /* CarouselCell.swift */,
+				361866371FDA0B9900BDC765 /* StatCell.swift */,
 			);
 			path = "Collection View Cells";
 			sourceTree = "<group>";
@@ -621,7 +621,7 @@
 				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,
 				36BCCC6E1FC032100015005C /* CurrencyCell.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
-				361866381FDA0B9900BDC765 /* CarouselCell.swift in Sources */,
+				361866381FDA0B9900BDC765 /* StatCell.swift in Sources */,
 				36DCC4E21FD7F04700161C7B /* LineChart.swift in Sources */,
 				36F43F951FD635790084163B /* StatViewController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,

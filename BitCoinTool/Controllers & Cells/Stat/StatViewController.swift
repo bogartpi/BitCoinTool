@@ -12,43 +12,21 @@ class StatViewController: UICollectionViewController {
     
     // MARK: - Properties
     
-    var markets = [Market]()
-    
-    private let prevButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("PREV", for: .normal)
-        button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("NEXT", for: .normal)
-        button.setTitleColor(UIColor.darkGray, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private let pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.currentPage = 0
-        pc.numberOfPages = 3
-        pc.pageIndicatorTintColor = .gray
-        pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        return pc
-    }()
+    var markets: [Market]? {
+        didSet {
+            self.collectionView?.reloadData()
+        }
+    }
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupCollectionView()
         setupNavigationTitle(title: "Stats")
-        setupBottomControls()
         fetchMarketData()
-        setupActionsForButtons()
+        collectionView?.backgroundColor = UIColor.customWhitecolor
     }
     
     // MARK: - Setup Views
@@ -57,65 +35,26 @@ class StatViewController: UICollectionViewController {
         collectionView?.backgroundColor = .white
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
-        collectionView?.isPagingEnabled = true
-    }
-    
-    private func setupBottomControls() {
-        let bottomStackView = UIStackView(arrangedSubviews: [pageControl])
-        bottomStackView.axis = .horizontal
-        bottomStackView.distribution = .fillEqually
-        bottomStackView.spacing = 10
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(bottomStackView)
-        
-        NSLayoutConstraint.activate([
-            bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bottomStackView.heightAnchor.constraint(equalToConstant: 40),
-            bottomStackView.widthAnchor.constraint(equalToConstant: 60)
-            ])
-    }
-    
-    // MARK: Setup Actions
-    
-    private func setupActionsForButtons() {
-        prevButton.addTarget(self, action: #selector(previousPressed(_:)), for: .touchUpInside)
-        nextButton.addTarget(self, action: #selector(nextPressed(_:)), for: .touchUpInside)
-    }
-    
-    @objc private func previousPressed(_ sender: UIButton) {
-        let nextIndex = max(pageControl.currentPage - 1, 0)
-        let indexPath = IndexPath(item: nextIndex, section: 0)
-        pageControl.currentPage = nextIndex
-        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-    
-    @objc private func nextPressed(_ sender: UIButton) {
-        let nextIndex = min(pageControl.currentPage + 1, 2)
-        let indexPath = IndexPath(item: nextIndex, section: 0)
-        pageControl.currentPage = nextIndex
-        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     // MARK: - Fetching Data
     
     private func fetchMarketData() {
-        DataManager.fetchMarketData([API.MarketURL,
-                                     API.TransactionURL,
-                                     API.CapitalizationURL]) { (markets, error) in
-            if let _ = error {
-                if !self.checkReachability() {
-                    self.showAlertWarning(title: "No Internet Connection",
-                                          message: "Please check your internet connection and try again")
-                } else {
-                    self.showAlertWarning(title: "Ops.. Something gone wrong :(",
-                                          message: "Please try again later")
+        DispatchQueue.main.async {
+            DataManager.fetchMarketData([API.MarketURL, API.TransactionURL, API.CapitalizationURL]) { (markets, error) in
+                if let _ = error {
+                    if !self.checkReachability() {
+                        self.showAlertWarning(title: "No Internet Connection",
+                                              message: "Please check your internet connection and try again")
+                    } else {
+                        self.showAlertWarning(title: "Ops.. Something gone wrong :(",
+                                              message: "Please try again later")
+                    }
                 }
-            }
-            
-            if let markets = markets {
-                self.markets = markets
+                
+                if let markets = markets {
+                    self.markets = markets
+                }
             }
         }
     }
@@ -123,30 +62,36 @@ class StatViewController: UICollectionViewController {
 
 extension StatViewController: UICollectionViewDelegateFlowLayout {
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return markets == nil ? 0 : 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return markets.count
+        guard let count = markets?.count else { return 0 }
+        return count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
-        cell.marketName.text = markets[indexPath.item].name
-        cell.marketDescription.text = markets[indexPath.item].description
-        cell.lastUpdated.text = "Last updated on 12 December 21:00 PM"
-        cell.marketValue.text = "$ 16599"
+        if let market = markets?[indexPath.item] {
+            cell.marketName.text = market.name
+            cell.marketDescription.text = market.description
+            cell.lastUpdated.text = "Last updated on 12 December 21:00 PM"
+            cell.marketValue.text = "$ 16599"
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 8
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return  CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let currentPageIndex = Int(targetContentOffset.pointee.x / view.frame.width)
-        pageControl.currentPage = currentPageIndex
+        return  CGSize(width: view.frame.width - 20, height: 200)
     }
 }
 

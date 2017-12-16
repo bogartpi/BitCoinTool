@@ -14,7 +14,7 @@ class StatCell: UICollectionViewCell {
     
     let marketName: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.darkGray
+        label.textColor = UIColor.customDarkBlueColor
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
         label.numberOfLines = 3
@@ -23,8 +23,8 @@ class StatCell: UICollectionViewCell {
     
     let marketValue: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.darkGray
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textColor = UIColor.customGreenColor
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         label.textAlignment = .center
         return label
     }()
@@ -32,7 +32,7 @@ class StatCell: UICollectionViewCell {
     let lastUpdated: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.darkGray
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 2
         label.textAlignment = .center
         return label
@@ -50,6 +50,8 @@ class StatCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        backgroundColor = .white
+        setDefaultShadowForCell(contentView: self.contentView)
     }
     
     func setup() {
@@ -66,7 +68,7 @@ class StatCell: UICollectionViewCell {
                          left: leftAnchor,
                          bottom: nil,
                          right: rightAnchor,
-                         paddingTop: 80, paddingLeft: 30,
+                         paddingTop: 20, paddingLeft: 30,
                          paddingBottom: 0, paddingRight: 30, height: 150)
     }
     

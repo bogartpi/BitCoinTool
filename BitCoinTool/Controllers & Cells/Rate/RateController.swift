@@ -23,7 +23,7 @@ class RateController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationTitle(title: "Rate")
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
         fetchCurrency()
     }

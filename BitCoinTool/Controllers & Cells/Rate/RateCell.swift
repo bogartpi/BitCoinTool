@@ -20,7 +20,7 @@ class RateCell: UICollectionViewCell {
     
     let currencyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = UIColor.gray
         label.textAlignment = .left
         label.text = ""
@@ -38,7 +38,7 @@ class RateCell: UICollectionViewCell {
     
     let buyValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.gray
         label.textAlignment = .center
         label.text = "2999.90"
@@ -56,7 +56,7 @@ class RateCell: UICollectionViewCell {
     
     let sellValueLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.gray
         label.textAlignment = .center
         label.text = "9998.09"
@@ -67,7 +67,9 @@ class RateCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = UIColor.white
         setup()
+        //setDefaultShadowForCell(contentView: self.contentView)
     }
     
     func setup() {
@@ -79,16 +81,16 @@ class RateCell: UICollectionViewCell {
         self.addSubview(buyStackView)
         self.addSubview(sellStackView)
         
-        countryImage.anchor(left: leftAnchor, paddingLeft: 10, width: 25, height: 25)
+        countryImage.anchor(left: leftAnchor, paddingLeft: 10, width: 20, height: 20)
         countryImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         currencyLabel.anchor(left: countryImage.rightAnchor, paddingLeft: 10, width: 50, height: 30)
         currencyLabel.centerYAnchor.constraint(equalTo: countryImage.centerYAnchor).isActive = true
         
-        buyStackView.anchor(top: nil, left: currencyLabel.rightAnchor, paddingLeft: 20, width: 100, height: 0)
+        buyStackView.anchor(top: nil, left: nil, bottom: nil, right: sellStackView.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 120, height: 0)
         buyStackView.centerYAnchor.constraint(equalTo: currencyLabel.centerYAnchor).isActive = true
         
-        sellStackView.anchor(top: nil, left: buyStackView.rightAnchor, paddingLeft: 20, width: 100, height: 0)
+        sellStackView.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 100, height: 0)
         sellStackView.centerYAnchor.constraint(equalTo: buyStackView.centerYAnchor).isActive = true
     }
     

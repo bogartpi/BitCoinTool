@@ -11,11 +11,11 @@
 		361866381FDA0B9900BDC765 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361866371FDA0B9900BDC765 /* StatCell.swift */; };
 		361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C51FD1FD4D9A100B48ECA /* DataManger.swift */; };
 		361C52021FD5429400B48ECA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361C52011FD5429400B48ECA /* Extensions.swift */; };
-		363576B71FD7412000752C12 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B61FD7412000752C12 /* Constraints.swift */; };
-		363576B91FD7419B00752C12 /* SafeAreaLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B81FD7419B00752C12 /* SafeAreaLayout.swift */; };
+		363576B71FD7412000752C12 /* Constraints+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B61FD7412000752C12 /* Constraints+Extension.swift */; };
+		363576B91FD7419B00752C12 /* SafeAreaLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363576B81FD7419B00752C12 /* SafeAreaLayout+Extension.swift */; };
 		366257F11FE38D2D005A9629 /* ConverterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F01FE38D2D005A9629 /* ConverterCell.swift */; };
 		366257F31FE39490005A9629 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F21FE39490005A9629 /* MainTabBarController.swift */; };
-		366257F51FE4AD9B005A9629 /* UIColor+Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F41FE4AD9B005A9629 /* UIColor+Themes.swift */; };
+		366257F51FE4AD9B005A9629 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
 		367E4E101FBD912C0013E89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0F1FBD912C0013E89F /* Assets.xcassets */; };
 		367E4E131FBD912C0013E89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		369BFB8D1FBF66950063C774 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369BFB8C1FBF66950063C774 /* RateController.swift */; };
 		36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DB1FC06B2800C6FE85 /* Configuration.swift */; };
 		36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A493DD1FC0796F00C6FE85 /* Currency.swift */; };
-		36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility.swift */; };
+		36A6F1031FD61DD800D94139 /* Reachibility+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility+Extension.swift */; };
 		36BCCC6E1FC032100015005C /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* RateCell.swift */; };
 		36DCC4E21FD7F04700161C7B /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DCC4E11FD7F04700161C7B /* LineChart.swift */; };
 		36F43F951FD635790084163B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F43F941FD635790084163B /* StatViewController.swift */; };
@@ -57,11 +57,11 @@
 		361866371FDA0B9900BDC765 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		361C51FD1FD4D9A100B48ECA /* DataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManger.swift; sourceTree = "<group>"; };
 		361C52011FD5429400B48ECA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		363576B61FD7412000752C12 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
-		363576B81FD7419B00752C12 /* SafeAreaLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaLayout.swift; sourceTree = "<group>"; };
+		363576B61FD7412000752C12 /* Constraints+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constraints+Extension.swift"; sourceTree = "<group>"; };
+		363576B81FD7419B00752C12 /* SafeAreaLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SafeAreaLayout+Extension.swift"; sourceTree = "<group>"; };
 		366257F01FE38D2D005A9629 /* ConverterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCell.swift; sourceTree = "<group>"; };
 		366257F21FE39490005A9629 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		366257F41FE4AD9B005A9629 /* UIColor+Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Themes.swift"; sourceTree = "<group>"; };
+		366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367E4E0F1FBD912C0013E89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		369BFB8C1FBF66950063C774 /* RateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
 		36A493DB1FC06B2800C6FE85 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		36A493DD1FC0796F00C6FE85 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		36A6F1021FD61DD800D94139 /* Reachibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachibility.swift; sourceTree = "<group>"; };
+		36A6F1021FD61DD800D94139 /* Reachibility+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reachibility+Extension.swift"; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
 		36DCC4E11FD7F04700161C7B /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		36F43F941FD635790084163B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
@@ -197,10 +197,10 @@
 			isa = PBXGroup;
 			children = (
 				361C52011FD5429400B48ECA /* Extensions.swift */,
-				36A6F1021FD61DD800D94139 /* Reachibility.swift */,
-				363576B61FD7412000752C12 /* Constraints.swift */,
-				363576B81FD7419B00752C12 /* SafeAreaLayout.swift */,
-				366257F41FE4AD9B005A9629 /* UIColor+Themes.swift */,
+				36A6F1021FD61DD800D94139 /* Reachibility+Extension.swift */,
+				363576B61FD7412000752C12 /* Constraints+Extension.swift */,
+				363576B81FD7419B00752C12 /* SafeAreaLayout+Extension.swift */,
+				366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -604,11 +604,11 @@
 				36F43F971FD653C00084163B /* Market.swift in Sources */,
 				360532911FBDC32A00CE145B /* ConverterController.swift in Sources */,
 				369BFB8D1FBF66950063C774 /* RateController.swift in Sources */,
-				363576B71FD7412000752C12 /* Constraints.swift in Sources */,
-				363576B91FD7419B00752C12 /* SafeAreaLayout.swift in Sources */,
+				363576B71FD7412000752C12 /* Constraints+Extension.swift in Sources */,
+				363576B91FD7419B00752C12 /* SafeAreaLayout+Extension.swift in Sources */,
 				361C52021FD5429400B48ECA /* Extensions.swift in Sources */,
 				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
-				36A6F1031FD61DD800D94139 /* Reachibility.swift in Sources */,
+				36A6F1031FD61DD800D94139 /* Reachibility+Extension.swift in Sources */,
 				36BCCC6E1FC032100015005C /* RateCell.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
 				361866381FDA0B9900BDC765 /* StatCell.swift in Sources */,
@@ -616,7 +616,7 @@
 				36F43F951FD635790084163B /* StatViewController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,
 				366257F31FE39490005A9629 /* MainTabBarController.swift in Sources */,
-				366257F51FE4AD9B005A9629 /* UIColor+Themes.swift in Sources */,
+				366257F51FE4AD9B005A9629 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

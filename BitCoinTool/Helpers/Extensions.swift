@@ -14,14 +14,25 @@ public extension UIViewController {
         navigationItem.title = title
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes =
-            [NSAttributedStringKey.foregroundColor: UIColor.white]
+            [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationItem.largeTitleDisplayMode = .always
             self.navigationController?.navigationBar.largeTitleTextAttributes =
-                [NSAttributedStringKey.foregroundColor: UIColor.white]
+                [NSAttributedStringKey.foregroundColor: UIColor.darkGray]
         }
+    }
+}
+
+public extension UIView {
+    public func setDefaultShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 2.0
+        self.clipsToBounds = false
+        self.layer.masksToBounds = false
     }
 }
 
@@ -43,11 +54,5 @@ public extension UIViewController {
         let alertAction = UIAlertAction(title: "Ok", style: .cancel)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true)
-    }
-}
-
-public extension UIColor {
-    public convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
-        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }

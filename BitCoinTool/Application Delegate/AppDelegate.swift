@@ -17,8 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func configureRootVC() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        let mainController = MainTabBarController()
+        window?.rootViewController = mainController
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureRootVC()
         return true
     }
 

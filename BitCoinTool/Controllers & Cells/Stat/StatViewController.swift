@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatViewController: UIViewController {
+class StatViewController: UICollectionViewController {
     
     // MARK: - Properties
     
@@ -39,13 +39,7 @@ class StatViewController: UIViewController {
         return pc
     }()
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     // MARK: - View Life Cycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +54,10 @@ class StatViewController: UIViewController {
     // MARK: - Setup Views
     
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
-        collectionView.isPagingEnabled = true
+        collectionView?.backgroundColor = .white
+        collectionView?.showsHorizontalScrollIndicator = false
+        collectionView?.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
+        collectionView?.isPagingEnabled = true
     }
     
     private func setupBottomControls() {
@@ -94,14 +88,14 @@ class StatViewController: UIViewController {
         let nextIndex = max(pageControl.currentPage - 1, 0)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     @objc private func nextPressed(_ sender: UIButton) {
         let nextIndex = min(pageControl.currentPage + 1, 2)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     // MARK: - Fetching Data
@@ -127,13 +121,13 @@ class StatViewController: UIViewController {
     }
 }
 
-extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension StatViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return markets.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
         cell.marketName.text = markets[indexPath.item].name
         cell.marketDescription.text = markets[indexPath.item].description
@@ -150,7 +144,7 @@ extension StatViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return  CGSize(width: view.frame.width, height: view.frame.height)
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let currentPageIndex = Int(targetContentOffset.pointee.x / view.frame.width)
         pageControl.currentPage = currentPageIndex
     }

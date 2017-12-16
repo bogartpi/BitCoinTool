@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ConverterController: UIViewController {
-
+class ConverterController: UICollectionViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView?.backgroundColor = .white
         setupNavigationTitle(title: "Converter")
     }
 

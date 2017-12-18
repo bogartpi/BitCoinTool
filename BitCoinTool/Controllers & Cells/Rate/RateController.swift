@@ -49,8 +49,8 @@ class RateController: UICollectionViewController {
     private func configure(cell: RateCell, at indexPath: IndexPath) {
         guard let currency = currencies?[indexPath.row] else { return }
         cell.countryImage.image = UIImage(named: currency.name)
-        cell.buyValueLabel.text = String(currency.buy)
-        cell.sellValueLabel.text = String(currency.sell)
+        cell.buyValueLabel.text = convertToLargeNumber(number: Int(currency.buy))
+        cell.sellValueLabel.text = convertToLargeNumber(number: Int(currency.sell))
         cell.currencyLabel.text = "\(currency.name)"
     }
 

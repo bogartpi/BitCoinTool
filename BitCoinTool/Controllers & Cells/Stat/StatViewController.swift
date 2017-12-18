@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum StatMenuTitles: String {
-    case price = "Bitcoin Price"
-    case transactions = "Confirmed Transactions"
-    case capitalization = "Market Capitalization"
-}
-
 class StatViewController: UICollectionViewController {
     
     // MARK: - Properties
@@ -59,9 +53,13 @@ class StatViewController: UICollectionViewController {
                                               message: "Please try again later")
                     }
                 }
-                
+    
                 if let markets = markets {
+                    var values: [Value] = []
+                    
                     self.markets = markets
+                    
+                    values = markets[0].values
                 }
             }
         }
@@ -90,14 +88,30 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
+        var valuesArray: [Value] = []
+        
         if let market = markets?[indexPath.item] {
-            if let lastDateUpdated = market.values.last?.dateX, let lastValueDouble = market.values.last?.valueY {
+            
+            valuesArray = market.values
+            let lastTwoValues = valuesArray.suffix(2)
+            let result = calculateChange(values: lastTwoValues)
+            
+            print("\n\(lastTwoValues)")
+            print("\n\(result)")
+            if result.positive {
+                cell.arrowImageView.image = UIImage(named: "up-arrow")
+            } else {
+                cell.arrowImageView.image = UIImage(named: "down-arrow")
+            }
+            cell.valueChangesLabel.text = String(result.change)
+            cell.marketName.text = statMenuTitles[indexPath.item].rawValue
+            cell.marketDescription.text = market.description
+            if let lastDateUpdated = market.values.last?.dateX,
+                let lastValueDouble = market.values.last?.valueY {
                 let lastValueInt = Int(lastValueDouble)
                 cell.lastUpdated.text = String(describing: lastDateUpdated)
                 cell.marketValue.text = convertToLargeNumber(number: lastValueInt)
             }
-            cell.marketName.text = statMenuTitles[indexPath.item].rawValue
-            cell.marketDescription.text = market.description
         }
         return cell
     }

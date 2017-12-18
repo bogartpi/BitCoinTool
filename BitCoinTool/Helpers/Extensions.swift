@@ -78,5 +78,41 @@ extension UIViewController {
         guard let formattedNumber = numberFormatter.string(from: NSNumber(value: number)) else { return ""}
         return formattedNumber
     }
+
+    func calculateChange(values: ArraySlice<Value>) -> (change: Double, positive: Bool) {
+        var positiveResult: Bool!
+        
+        guard let firstValue = values.first?.valueY else { fatalError("No value") }
+        guard let lastValue = values.last?.valueY else { fatalError("No value") }
+        
+        var change = ((lastValue - firstValue) * 100 / lastValue)
+        
+        if change > 0 {
+            positiveResult = true
+        } else {
+            positiveResult = false
+        }
+        
+        return (change.roundToPlaces(places: 2), positiveResult)
+    }
     
 }
+
+extension Double {
+    
+    mutating func roundToPlaces(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return Darwin.round(self * divisor) / divisor
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+

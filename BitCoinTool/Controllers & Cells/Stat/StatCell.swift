@@ -96,12 +96,12 @@ class StatCell: UICollectionViewCell {
                          paddingTop: 10, paddingLeft: 8,
                          paddingBottom: 10, paddingRight: 8)
         rightStackView.anchor(top: nil,
-                              left: stackView.rightAnchor,
+                              left: nil,
                               bottom: nil,
                               right: rightAnchor,
                               paddingTop: 0, paddingLeft: 0,
                               paddingBottom: 0, paddingRight: 8,
-                              width: 0, height: 70)
+                              width: 60, height: 70)
         rightStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     

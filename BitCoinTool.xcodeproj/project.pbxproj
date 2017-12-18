@@ -16,6 +16,8 @@
 		366257F11FE38D2D005A9629 /* ConverterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F01FE38D2D005A9629 /* ConverterCell.swift */; };
 		366257F31FE39490005A9629 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F21FE39490005A9629 /* MainTabBarController.swift */; };
 		366257F51FE4AD9B005A9629 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */; };
+		366257F81FE76F62005A9629 /* StatDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F71FE76F62005A9629 /* StatDetailsController.swift */; };
+		366257FA1FE773FE005A9629 /* CircularTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366257F91FE773FE005A9629 /* CircularTransition.swift */; };
 		367E4E091FBD912C0013E89F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367E4E081FBD912C0013E89F /* AppDelegate.swift */; };
 		367E4E101FBD912C0013E89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E0F1FBD912C0013E89F /* Assets.xcassets */; };
 		367E4E131FBD912C0013E89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367E4E111FBD912C0013E89F /* LaunchScreen.storyboard */; };
@@ -62,6 +64,8 @@
 		366257F01FE38D2D005A9629 /* ConverterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCell.swift; sourceTree = "<group>"; };
 		366257F21FE39490005A9629 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		366257F71FE76F62005A9629 /* StatDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailsController.swift; sourceTree = "<group>"; };
+		366257F91FE773FE005A9629 /* CircularTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularTransition.swift; sourceTree = "<group>"; };
 		367E4E051FBD912C0013E89F /* BitCoinTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitCoinTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367E4E081FBD912C0013E89F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367E4E0F1FBD912C0013E89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 			children = (
 				36A493DD1FC0796F00C6FE85 /* Currency.swift */,
 				36F43F961FD653C00084163B /* Market.swift */,
+				366257F91FE773FE005A9629 /* CircularTransition.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +208,14 @@
 				366257F41FE4AD9B005A9629 /* UIColor+Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		366257F61FE76F3E005A9629 /* Stat Details */ = {
+			isa = PBXGroup;
+			children = (
+				366257F71FE76F62005A9629 /* StatDetailsController.swift */,
+			);
+			path = "Stat Details";
 			sourceTree = "<group>";
 		};
 		367E4DFC1FBD912C0013E89F = {
@@ -293,6 +306,7 @@
 			children = (
 				36F43F941FD635790084163B /* StatViewController.swift */,
 				361866371FDA0B9900BDC765 /* StatCell.swift */,
+				366257F61FE76F3E005A9629 /* Stat Details */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -606,6 +620,7 @@
 				369BFB8D1FBF66950063C774 /* RateController.swift in Sources */,
 				363576B71FD7412000752C12 /* Constraints+Extension.swift in Sources */,
 				363576B91FD7419B00752C12 /* SafeAreaLayout+Extension.swift in Sources */,
+				366257F81FE76F62005A9629 /* StatDetailsController.swift in Sources */,
 				361C52021FD5429400B48ECA /* Extensions.swift in Sources */,
 				36A493DC1FC06B2800C6FE85 /* Configuration.swift in Sources */,
 				36A6F1031FD61DD800D94139 /* Reachibility+Extension.swift in Sources */,
@@ -613,6 +628,7 @@
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
 				361866381FDA0B9900BDC765 /* StatCell.swift in Sources */,
 				36DCC4E21FD7F04700161C7B /* LineChart.swift in Sources */,
+				366257FA1FE773FE005A9629 /* CircularTransition.swift in Sources */,
 				36F43F951FD635790084163B /* StatViewController.swift in Sources */,
 				36A493DE1FC0796F00C6FE85 /* Currency.swift in Sources */,
 				366257F31FE39490005A9629 /* MainTabBarController.swift in Sources */,

@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum StatMenuTitles: String {
+    case price = "Bitcoin Price"
+    case transactions = "Confirmed Transactions"
+    case capitalization = "Market Capitalization"
+}
+
 class StatViewController: UICollectionViewController {
     
     // MARK: - Properties
@@ -18,13 +24,15 @@ class StatViewController: UICollectionViewController {
         }
     }
     
+    var statMenuTitles: [StatMenuTitles] = [.price, .transactions, .capitalization]
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCollectionView()
         setupNavigationTitle(title: "Stats")
+        setupCollectionView()
         fetchMarketData()
         collectionView?.backgroundColor = UIColor.customWhitecolor
     }
@@ -58,6 +66,11 @@ class StatViewController: UICollectionViewController {
             }
         }
     }
+    
+    private func showStatDetailsController() {
+        let controller = StatDetailsController()
+        self.present(controller, animated: true, completion: nil)
+    }
 }
 
 extension StatViewController: UICollectionViewDelegateFlowLayout {
@@ -78,10 +91,13 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
         if let market = markets?[indexPath.item] {
-            cell.marketName.text = market.name
+            if let lastDateUpdated = market.values.last?.dateX, let lastValueDouble = market.values.last?.valueY {
+                let lastValueInt = Int(lastValueDouble)
+                cell.lastUpdated.text = String(describing: lastDateUpdated)
+                cell.marketValue.text = convertToLargeNumber(number: lastValueInt)
+            }
+            cell.marketName.text = statMenuTitles[indexPath.item].rawValue
             cell.marketDescription.text = market.description
-            cell.lastUpdated.text = "Last updated on 12 December 21:00 PM"
-            cell.marketValue.text = "$ 16599"
         }
         return cell
     }
@@ -92,6 +108,10 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return  CGSize(width: view.frame.width - 20, height: 200)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showStatDetailsController()
     }
 }
 

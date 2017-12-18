@@ -50,7 +50,7 @@ class MainTabBarController: UITabBarController {
         guard let items = tabBar.items else { return }
         
         for item in items {
-            item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0)
+            item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         }
     }
     

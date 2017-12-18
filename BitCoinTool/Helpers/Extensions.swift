@@ -69,3 +69,14 @@ public extension UIViewController {
         self.present(alertController, animated: true)
     }
 }
+
+extension UIViewController {
+    
+    func convertToLargeNumber(number: Int) ->  String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        guard let formattedNumber = numberFormatter.string(from: NSNumber(value: number)) else { return ""}
+        return formattedNumber
+    }
+    
+}

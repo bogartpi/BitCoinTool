@@ -24,7 +24,7 @@ class StatCell: UICollectionViewCell {
     let marketValue: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.customGreenColor
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.font = UIFont.boldSystemFont(ofSize: 35)
         label.textAlignment = .center
         return label
     }()

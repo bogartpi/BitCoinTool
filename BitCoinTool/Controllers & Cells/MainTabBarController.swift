@@ -27,8 +27,13 @@ class MainTabBarController: UITabBarController {
         // Controllers
         
         let rateController = RateController(collectionViewLayout: UICollectionViewFlowLayout())
+
+        
         let converterController = ConverterController(collectionViewLayout: UICollectionViewFlowLayout())
+
+        
         let statController = StatViewController(collectionViewLayout: UICollectionViewFlowLayout())
+
         
         // Rate
         let rate = constructController(rootController: rateController,

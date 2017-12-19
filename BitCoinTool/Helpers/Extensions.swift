@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Charts
 
 public extension UIViewController {
     func setupNavigationTitle(title: String) {
@@ -98,7 +99,7 @@ extension UIViewController {
     
 }
 
-extension Double {
+public extension Double {
     
     mutating func roundToPlaces(places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
@@ -107,8 +108,54 @@ extension Double {
     
 }
 
+public extension UIViewController {
+    func convertToDate(value: Int, style: DateFormatter.Style) -> String {
+        let date = NSDate(timeIntervalSince1970: TimeInterval(value))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = style //Set date style
+        dateFormatter.timeZone = TimeZone.current
+        return dateFormatter.string(from: date as Date)
+    }
+}
 
+public extension UIViewController {
+    
+    func addLineChartView() -> LineChartView {
+        let chart = LineChartView()
+        chart.noDataText = ""
+        chart.dragEnabled = false
+        chart.setScaleEnabled(false)
+        chart.chartDescription?.enabled = false
+        chart.maxHighlightDistance = 300
+        
+        chart.xAxis.enabled = false
+        
+        let yAxis = chart.leftAxis
+        yAxis.drawAxisLineEnabled = false
+        yAxis.enabled = false
+        
+        chart.rightAxis.enabled = false
+        chart.legend.enabled = false
+        
+        chart.translatesAutoresizingMaskIntoConstraints = false
+        return chart
+    }
+    
+    func addReferenceLabel(text: String, color: UIColor, view: UIView? = nil) -> UILabel {
+        
+        let label = UILabel()
+        label.text = text
+        label.textColor = color
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 11)
+        
+        self.view.addSubview(label)
+        label.anchor(top: view?.bottomAnchor, left: view?.leftAnchor, bottom: nil, right: view?.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
 
+        return label
+    }
+    
+}
 
 
 

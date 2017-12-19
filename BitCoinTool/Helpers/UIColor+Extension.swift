@@ -9,12 +9,33 @@
 import UIKit
 
 public extension UIColor {
+    convenience init(netHex:Int) {
+        let components = (
+            R: CGFloat((netHex >> 16) & 0xff) / 255,
+            G: CGFloat((netHex >> 08) & 0xff) / 255,
+            B: CGFloat((netHex >> 00) & 0xff) / 255
+        )
+        self.init(red: components.R, green: components.G, blue: components.B, alpha: 1)
+    }
+}
+
+public extension UIColor {
     public convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
 
-extension UIColor {
+public extension UIColor {
+    func inverse () -> UIColor {
+        var r:CGFloat = 0.0; var g:CGFloat = 0.0; var b:CGFloat = 0.0; var a:CGFloat = 0.0;
+        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return UIColor(red: 1.0-r, green: 1.0 - g, blue: 1.0 - b, alpha: a)
+        }
+        return .black
+    }
+}
+
+public extension UIColor {
     
     static var customGreenColor: UIColor = {
         return UIColor(r: 98, g: 200, b: 177)

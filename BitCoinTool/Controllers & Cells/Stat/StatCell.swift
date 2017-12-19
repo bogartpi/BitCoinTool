@@ -56,11 +56,11 @@ class StatCell: UICollectionViewCell {
     
     let valueChangesLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.customDarkBlueColor
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.numberOfLines = 1
         label.textAlignment = .center
-        label.text = "0.234 %"
+        label.text = "Not available"
         return label
     }()
     
@@ -101,7 +101,7 @@ class StatCell: UICollectionViewCell {
                               right: rightAnchor,
                               paddingTop: 0, paddingLeft: 0,
                               paddingBottom: 0, paddingRight: 8,
-                              width: 60, height: 70)
+                              width: 50, height: 70)
         rightStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
     

@@ -14,7 +14,7 @@ class RateController: UICollectionViewController {
     
     var currencies: [Currency]? {
         didSet {
-            print("set")
+            
         }
     }
 
@@ -66,7 +66,6 @@ extension RateController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let currencies = currencies else { return 0 }
-        print(currencies.count)
         return currencies.count
     }
     

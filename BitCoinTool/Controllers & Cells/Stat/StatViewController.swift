@@ -55,19 +55,48 @@ class StatViewController: UICollectionViewController {
                 }
     
                 if let markets = markets {
-                    var values: [Value] = []
-                    
                     self.markets = markets
-                    
-                    values = markets[0].values
                 }
             }
         }
     }
     
+    // MARK: - Setup CollectionView Cell
+    
+    func setupCell(cell: StatCell, at indexPath: IndexPath) {
+        var valuesArray: [Value] = []
+        
+        if let market = markets?[indexPath.item] {
+            
+            valuesArray = market.values
+            let lastTwoValues = valuesArray.suffix(2)
+            let result = calculateChange(values: lastTwoValues)
+            
+            if result.positive {
+                cell.arrowImageView.image = UIImage(named: "up-arrow")
+                cell.valueChangesLabel.textColor = UIColor.customGreenColor
+            } else {
+                cell.arrowImageView.image = UIImage(named: "down-arrow")
+                cell.valueChangesLabel.textColor = UIColor.customRedColor
+            }
+
+            cell.valueChangesLabel.text = String("\(result.change)%")
+            cell.marketName.text = statMenuTitles[indexPath.item].rawValue
+            cell.marketDescription.text = market.description
+            
+            if let lastDateUpdated = market.values.last?.dateX,
+                let lastValueDouble = market.values.last?.valueY {
+                let lastValueInt = Int(lastValueDouble)
+                cell.lastUpdated.text = "Updated on \(convertToDate(value: lastDateUpdated, style: .medium))"
+                cell.marketValue.text = convertToLargeNumber(number: lastValueInt)
+            }
+        }
+    }
+    
+    // MARK: - Handle Selected Cell
+    
     private func showStatDetailsController() {
-        let controller = StatDetailsController()
-        self.present(controller, animated: true, completion: nil)
+
     }
 }
 
@@ -88,31 +117,7 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
-        var valuesArray: [Value] = []
-        
-        if let market = markets?[indexPath.item] {
-            
-            valuesArray = market.values
-            let lastTwoValues = valuesArray.suffix(2)
-            let result = calculateChange(values: lastTwoValues)
-            
-            print("\n\(lastTwoValues)")
-            print("\n\(result)")
-            if result.positive {
-                cell.arrowImageView.image = UIImage(named: "up-arrow")
-            } else {
-                cell.arrowImageView.image = UIImage(named: "down-arrow")
-            }
-            cell.valueChangesLabel.text = String(result.change)
-            cell.marketName.text = statMenuTitles[indexPath.item].rawValue
-            cell.marketDescription.text = market.description
-            if let lastDateUpdated = market.values.last?.dateX,
-                let lastValueDouble = market.values.last?.valueY {
-                let lastValueInt = Int(lastValueDouble)
-                cell.lastUpdated.text = String(describing: lastDateUpdated)
-                cell.marketValue.text = convertToLargeNumber(number: lastValueInt)
-            }
-        }
+        self.setupCell(cell: cell, at: indexPath)
         return cell
     }
     
@@ -125,7 +130,9 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showStatDetailsController()
+        let statDetailController = StatDetailsController()
+        statDetailController.marketValues = markets?[indexPath.item]
+        self.present(statDetailController, animated: true, completion: nil)
     }
 }
 

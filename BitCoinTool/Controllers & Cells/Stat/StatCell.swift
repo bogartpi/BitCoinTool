@@ -10,8 +10,6 @@ import UIKit
 
 class StatCell: UICollectionViewCell {
     
-    static let reuseIdentifier = "statCell"
-    
     let marketName: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.customDarkBlueColor
@@ -64,14 +62,18 @@ class StatCell: UICollectionViewCell {
         return label
     }()
     
+    static let reuseIdentifier = "statCell"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-        backgroundColor = .white
-        setDefaultShadowForCell(contentView: self.contentView)
+        
+        setupViews()
     }
     
-    func setup() {
+    func setupViews() {
+        backgroundColor = .white
+        setDefaultShadowForCell(contentView: self.contentView)
+        
         let stackView = UIStackView(arrangedSubviews: [marketName,
                                                        marketValue,
                                                        lastUpdated,

@@ -12,19 +12,13 @@ class RateController: UICollectionViewController {
 
     // MARK: - Properties
     
-    var currencies: [Currency]? {
-        didSet {
-            
-        }
-    }
+    var currencies: [Currency]? = []
 
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationTitle(title: "Rate")
-        collectionView?.backgroundColor = UIColor.customWhiteDarkColor
-        collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
+        setup()
         fetchCurrency()
     }
     
@@ -46,6 +40,12 @@ class RateController: UICollectionViewController {
     
     // MARK: - Setup View Methods
 
+    private func setup() {
+        setupNavigationTitle(title: "Rate")
+        collectionView?.backgroundColor = UIColor.customWhiteDarkColor
+        collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
+    }
+    
     private func configure(cell: RateCell, at indexPath: IndexPath) {
         guard let currency = currencies?[indexPath.row] else { return }
         cell.countryImage.image = UIImage(named: currency.name)
@@ -70,13 +70,10 @@ extension RateController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RateCell.reuseIdentifier, for: indexPath) as? RateCell else {
             fatalError("Unexpected Table View Cell")
         }
-        
         configure(cell: cell, at: indexPath)
-        
         return cell
     }
     

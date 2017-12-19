@@ -41,7 +41,6 @@ class RateCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.gray
         label.textAlignment = .center
-        label.text = "2999.90"
         return label
     }()
     
@@ -59,7 +58,6 @@ class RateCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.gray
         label.textAlignment = .center
-        label.text = "9998.09"
         return label
     }()
     
@@ -67,12 +65,11 @@ class RateCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.white
         setup()
-        //setDefaultShadowForCell(contentView: self.contentView)
     }
     
     func setup() {
+        backgroundColor = UIColor.white
         let buyStackView = setStackView(with: [buyTitleLabel, buyValueLabel])
         let sellStackView = setStackView(with: [sellTitleLabel, sellValueLabel])
         
@@ -92,14 +89,6 @@ class RateCell: UICollectionViewCell {
         
         sellStackView.anchor(top: nil, left: nil, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 100, height: 0)
         sellStackView.centerYAnchor.constraint(equalTo: buyStackView.centerYAnchor).isActive = true
-    }
-    
-    func setStackView(with labels: [UIView]) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: labels)
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 5
-        return stackView
     }
     
     required init?(coder aDecoder: NSCoder) {

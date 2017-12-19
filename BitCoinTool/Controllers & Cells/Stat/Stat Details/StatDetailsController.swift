@@ -20,6 +20,13 @@ class StatDetailsController: UIViewController {
         return button
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.customBlueColor
+        return tableView
+    }()
+    
     var marketValues: Market? {
         didSet {
             self.values = marketValues?.values
@@ -32,17 +39,12 @@ class StatDetailsController: UIViewController {
         }
     }
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.customBlueColor
-        return tableView
-    }()
-    
     var chart: LineChartView!
     var graphDescription: String?
     var selectedIndexPath: IndexPath?
     var descriptionLabel: UILabel!
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,9 @@ class StatDetailsController: UIViewController {
         setupViews()
     }
     
-    func configure() {
+    // MARK: - Setup Views
+    
+    private func configure() {
         chart = self.addLineChartView()
         chart.delegate = self
 
@@ -64,10 +68,9 @@ class StatDetailsController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(StatDetailsCell.self, forCellReuseIdentifier: StatDetailsCell.resuseIdentifier)
-        
     }
     
-    func setupViews() {
+    private func setupViews() {
         view.backgroundColor = UIColor.customBlueColor
         view.addSubview(closeButton)
         view.addSubview(tableView)
@@ -77,15 +80,27 @@ class StatDetailsController: UIViewController {
         
         tableView.anchor(top: nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.frame.height / 2)
         
-        chart.anchor(top: view.safeTopAnchor, left: view.leftAnchor, bottom: tableView.topAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 0, paddingBottom: 20, paddingRight: 0, width: 0, height: 0)
+        chart.anchor(top: view.safeTopAnchor, left: view.leftAnchor, bottom: tableView.topAnchor, right: view.rightAnchor, paddingTop: 35, paddingLeft: 0, paddingBottom: 20, paddingRight: 0, width: 0, height: 0)
         
         descriptionLabel = self.addReferenceLabel(text: "", color: UIColor.white, view: chart)
+    }
+    
+    // MARK: - Configure Table View Cell
+    
+    private func configureCell(_ cell: StatDetailsCell, at indexPath: IndexPath) {
+        guard let value = values?[indexPath.row] else { fatalError() }
+        let convertedDate = convertToDate(value: value.dateX, style: .medium)
+        let convertedValue = convertToLargeNumber(number: Int(value.valueY))
+        cell.dateLabel.text = convertedDate
+        cell.valueLabel.text = String(convertedValue)
     }
     
     @objc func dismissController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - Table View Methods
 
 extension StatDetailsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,12 +110,7 @@ extension StatDetailsController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StatDetailsCell.resuseIdentifier, for: indexPath) as! StatDetailsCell
-        guard let value = values?[indexPath.row] else { fatalError() }
-
-        let convertedDate = convertToDate(value: value.dateX, style: .medium)
-        let convertedValue = convertToLargeNumber(number: Int(value.valueY))
-        cell.dateLabel.text = convertedDate
-        cell.valueLabel.text = String(convertedValue)
+        configureCell(cell, at: indexPath)
         return cell
     }
     
@@ -108,6 +118,8 @@ extension StatDetailsController: UITableViewDelegate, UITableViewDataSource {
         return 40
     }
 }
+
+// MARK: - Line Chart Methods
 
 extension StatDetailsController: ChartViewDelegate {
     

@@ -63,7 +63,7 @@ class StatViewController: UICollectionViewController {
     
     // MARK: - Setup CollectionView Cell
     
-    func setupCell(cell: StatCell, at indexPath: IndexPath) {
+    func configureCell(cell: StatCell, at indexPath: IndexPath) {
         var valuesArray: [Value] = []
         
         if let market = markets?[indexPath.item] {
@@ -95,10 +95,14 @@ class StatViewController: UICollectionViewController {
     
     // MARK: - Handle Selected Cell
     
-    private func showStatDetailsController() {
-
+    private func showStatDetailsController(at indexPath: IndexPath) {
+        let statDetailController = StatDetailsController()
+        statDetailController.marketValues = markets?[indexPath.item]
+        self.present(statDetailController, animated: true, completion: nil)
     }
 }
+
+// MARK: - Collection View Methods
 
 extension StatViewController: UICollectionViewDelegateFlowLayout {
     
@@ -117,7 +121,7 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatCell.reuseIdentifier, for: indexPath) as! StatCell
-        self.setupCell(cell: cell, at: indexPath)
+        configureCell(cell: cell, at: indexPath)
         return cell
     }
     
@@ -130,9 +134,7 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let statDetailController = StatDetailsController()
-        statDetailController.marketValues = markets?[indexPath.item]
-        self.present(statDetailController, animated: true, completion: nil)
+        showStatDetailsController(at: indexPath)
     }
 }
 

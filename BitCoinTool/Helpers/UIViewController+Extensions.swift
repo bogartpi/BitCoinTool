@@ -10,6 +10,29 @@ import Foundation
 import UIKit
 import Charts
 
+extension UITextField {
+    
+    func setRightPaddingPoints(_ space: CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: space, height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
+}
+
+extension UIView {
+    
+    public func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc public func dismissKeyboard() {
+        self.endEditing(true)
+    }
+    
+}
+
 public extension UIViewController {
     func setupActivityIndicator() -> UIActivityIndicatorView {
         let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)

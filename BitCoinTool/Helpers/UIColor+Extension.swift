@@ -72,4 +72,8 @@ public extension UIColor {
     static var customWarningColor: UIColor = {
         return UIColor(r: 244, g: 67, b: 54)
     }()
+    
+    static var customYellowColor: UIColor = {
+        return UIColor(r: 245, g: 166, b: 35)
+    }()
 }

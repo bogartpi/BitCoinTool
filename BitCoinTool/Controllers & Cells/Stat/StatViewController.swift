@@ -18,6 +18,8 @@ class StatViewController: UICollectionViewController {
         }
     }
     
+    fileprivate var activityIndicatorView = UIActivityIndicatorView()
+    
     var statMenuTitles: [StatMenuTitles] = [.price, .transactions, .capitalization]
     
     // MARK: - View Life Cycle
@@ -27,16 +29,26 @@ class StatViewController: UICollectionViewController {
         
         setupNavigationTitle(title: "Stats")
         setupCollectionView()
+        setupActivityIndicator()
+        
         fetchMarketData()
-        collectionView?.backgroundColor = UIColor.customWhitecolor
     }
     
     // MARK: - Setup Views
     
     private func setupCollectionView() {
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor.customWhitecolor
         collectionView?.showsHorizontalScrollIndicator = false
         collectionView?.register(StatCell.self, forCellWithReuseIdentifier: StatCell.reuseIdentifier)
+    }
+    
+    private func setupActivityIndicator() {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.color = UIColor.customBlueColor
+        collectionView?.backgroundView = activityIndicatorView
+        self.activityIndicatorView = activityIndicatorView
     }
     
     // MARK: - Fetching Data
@@ -56,6 +68,8 @@ class StatViewController: UICollectionViewController {
     
                 if let markets = markets {
                     self.markets = markets
+                    self.activityIndicatorView.stopAnimating()
+                    self.collectionView?.reloadData()
                 }
             }
         }
@@ -64,6 +78,7 @@ class StatViewController: UICollectionViewController {
     // MARK: - Setup CollectionView Cell
     
     func configureCell(cell: StatCell, at indexPath: IndexPath) {
+        
         var valuesArray: [Value] = []
         
         if let market = markets?[indexPath.item] {

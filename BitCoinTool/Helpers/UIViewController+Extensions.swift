@@ -11,6 +11,27 @@ import UIKit
 import Charts
 
 public extension UIViewController {
+    func setupActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.color = UIColor.customBlueColor
+        return activityIndicatorView
+    }
+    
+    func setNodataLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "No data available"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = UIColor.customGrayColor
+        label.textAlignment = .center
+        label.alpha = 0.5
+        return label
+    }
+    
+}
+
+public extension UIViewController {
     func setupNavigationTitle(title: String) {
         navigationItem.title = title
         navigationController?.navigationBar.isTranslucent = false

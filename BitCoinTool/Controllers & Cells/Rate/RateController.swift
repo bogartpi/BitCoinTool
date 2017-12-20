@@ -12,46 +12,58 @@ class RateController: UICollectionViewController {
 
     // MARK: - Properties
     
+    fileprivate var nodataLabel: UILabel!
     var currencies: [Currency]? = []
-
+    fileprivate var activityIndicatorView: UIActivityIndicatorView!
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setupViews()
         fetchCurrency()
-    }
-    
-    // MARK: - Fetching Data
-    
-    private func fetchCurrency() {
-        DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
-            if let _ = error {
-                if !self.checkReachability() {
-                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection and try again")
-                } else {
-                    self.showAlertWarning(title: "Ops.. Something gone wrong :(", message: "Please try again later")
-                }
-            } else {
-                self.currencies = currencies
-            }
-        }
     }
     
     // MARK: - Setup View Methods
 
-    private func setup() {
+    fileprivate func setupViews() {
         setupNavigationTitle(title: "Rate")
+        self.activityIndicatorView = setupActivityIndicator()
         collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
+        collectionView?.backgroundView = self.activityIndicatorView
+        
+        self.nodataLabel = setNodataLabel()
     }
     
-    private func configure(cell: RateCell, at indexPath: IndexPath) {
+    fileprivate func configure(cell: RateCell, at indexPath: IndexPath) {
         guard let currency = currencies?[indexPath.row] else { return }
         cell.countryImage.image = UIImage(named: currency.name)
         cell.buyValueLabel.text = convertToLargeNumber(number: Int(currency.buy))
         cell.sellValueLabel.text = convertToLargeNumber(number: Int(currency.sell))
         cell.currencyLabel.text = "\(currency.name)"
+    }
+    
+    // MARK: - Fetching Data
+    
+    fileprivate func fetchCurrency() {
+        DataManager.fetchCurrencyData(API.RateURL) { (currencies, error) in
+            if let _ = error {
+                if !self.checkReachability() {
+                    self.showAlertWarning(title: "No Internet Connection", message: "Please check your internet connection and try again")
+                    self.activityIndicatorView.stopAnimating()
+                    self.collectionView?.backgroundView = self.nodataLabel
+                } else {
+                    self.showAlertWarning(title: "Ops.. Something gone wrong :(", message: "Please try again later")
+                    self.activityIndicatorView.stopAnimating()
+                    self.collectionView?.backgroundView = self.nodataLabel
+                }
+            } else {
+                self.currencies = currencies
+                self.activityIndicatorView.stopAnimating()
+                self.collectionView?.reloadData()
+            }
+        }
     }
 
 }
@@ -65,7 +77,9 @@ extension RateController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let currencies = currencies else { return 0 }
+        guard let currencies = currencies else {
+            return 0
+        }
         return currencies.count
     }
     

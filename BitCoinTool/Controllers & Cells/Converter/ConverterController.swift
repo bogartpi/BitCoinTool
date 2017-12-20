@@ -12,7 +12,7 @@ class ConverterController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView?.backgroundColor = .white
+        collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         setupNavigationTitle(title: "Converter")
     }
 

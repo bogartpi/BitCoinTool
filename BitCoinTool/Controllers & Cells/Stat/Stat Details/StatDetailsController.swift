@@ -13,14 +13,14 @@ class StatDetailsController: UIViewController {
     
     // MARK: - Properties
     
-    let closeButton: UIButton = {
+    fileprivate let closeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "close"), for: .normal)
         button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
         return button
     }()
     
-    lazy var tableView: UITableView = {
+    fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.customBlueColor
@@ -33,44 +33,46 @@ class StatDetailsController: UIViewController {
             self.values = values?.sorted(by: {$0.dateX > $1.dateX})
         }
     }
-    var values: [Value]? {
+    
+    fileprivate var values: [Value]? {
         didSet {
             self.tableView.reloadData()
         }
     }
     
-    var chart: LineChartView!
-    var graphDescription: String?
-    var selectedIndexPath: IndexPath?
-    var descriptionLabel: UILabel!
+    fileprivate var chart: LineChartView!
+    fileprivate var graphDescription: String?
+    fileprivate var selectedIndexPath: IndexPath?
+    fileprivate var descriptionLabel: UILabel!
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        setupChartView()
+        setupTableView()
         setupViews()
     }
     
     // MARK: - Setup Views
     
-    private func configure() {
+    fileprivate func setupChartView() {
         chart = self.addLineChartView()
         chart.delegate = self
-
         self.chart.setData(dataPoints: (self.values?.map({$0.dateX}).reversed())!, values: (self.values?.map({$0.valueY}).reversed())!, label: "PIB", lineColor: self.view.backgroundColor?.inverse())
-        
+    }
+    
+    fileprivate func setupTableView() {
         self.tableView.presentTableViewAnimated(y: self.view.bounds.size.height, completion: {
             guard let marketName = self.marketValues?.name else { return }
             self.descriptionLabel.text = "* \(marketName)"
         })
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(StatDetailsCell.self, forCellReuseIdentifier: StatDetailsCell.resuseIdentifier)
     }
     
-    private func setupViews() {
+    fileprivate func setupViews() {
         view.backgroundColor = UIColor.customBlueColor
         view.addSubview(closeButton)
         view.addSubview(tableView)
@@ -87,7 +89,7 @@ class StatDetailsController: UIViewController {
     
     // MARK: - Configure Table View Cell
     
-    private func configureCell(_ cell: StatDetailsCell, at indexPath: IndexPath) {
+    fileprivate func configureCell(_ cell: StatDetailsCell, at indexPath: IndexPath) {
         guard let value = values?[indexPath.row] else { fatalError() }
         let convertedDate = convertToDate(value: value.dateX, style: .medium)
         let convertedValue = convertToLargeNumber(number: Int(value.valueY))
@@ -103,6 +105,7 @@ class StatDetailsController: UIViewController {
 // MARK: - Table View Methods
 
 extension StatDetailsController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let count = values?.count else { return 0 }
         return count

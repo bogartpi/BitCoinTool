@@ -29,10 +29,10 @@ class RateController: UICollectionViewController {
     fileprivate func setupViews() {
         setupNavigationTitle(title: "Rate")
         self.activityIndicatorView = setupActivityIndicator()
+        collectionView?.backgroundView = self.activityIndicatorView
         collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
-        collectionView?.backgroundView = self.activityIndicatorView
-        
+    
         self.nodataLabel = setNodataLabel()
     }
     

@@ -79,10 +79,10 @@ class RateCell: UICollectionViewCell {
         self.addSubview(buyStackView)
         self.addSubview(sellStackView)
         
-        countryImage.anchor(left: leftAnchor, paddingLeft: 10, width: 20, height: 20)
+        countryImage.anchor(left: leftAnchor, paddingLeft: 10, width: 40, height: 30)
         countryImage.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
-        currencyLabel.anchor(left: countryImage.rightAnchor, paddingLeft: 10, width: 50, height: 30)
+        currencyLabel.anchor(left: countryImage.rightAnchor, paddingLeft: 10, width: 60, height: 45)
         currencyLabel.centerYAnchor.constraint(equalTo: countryImage.centerYAnchor).isActive = true
         
         buyStackView.anchor(top: nil, left: nil, bottom: nil, right: sellStackView.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 120, height: 0)

@@ -8,9 +8,51 @@
 
 import UIKit
 
+protocol ConvertCellDelegate: class {
+    func didTapCurrencyButton(_ sender: ConverterCell)
+}
+
 class ConverterCell: UICollectionViewCell {
     
+    var delegate: ConvertCellDelegate?
+    
     static let reuseIdentifier = "ConverterCell"
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+        currencyButton.addTarget(self, action: #selector(handleCurrencyButton), for: .touchUpInside)
+    }
+    
+    @objc func handleCurrencyButton(_ sender: UIButton) {
+        delegate?.didTapCurrencyButton(self)
+    }
+    
+    func setup() {
+        backgroundColor = .clear
+        setupStackViews()
+    }
+    
+    func setupStackViews() {
+        let bitcoinStackView = setStackView(items: [btcTextField, btcButton], dist: .fillProportionally, axis: .horizontal)
+        let currencyStackView = setStackView(items: [currencyTextField, currencyButton], dist: .fillProportionally, axis: .horizontal)
+        let buttonsStackView = setStackView(items: [convertButton], dist: .fillEqually, axis: .horizontal)
+        let labelsStackView = setStackView(items: [dateLabel, bitcoinValueLabel, currencyValueLabel], dist: .fillEqually, axis: .vertical)
+        
+        addSubview(bitcoinStackView)
+        addSubview(currencyStackView)
+        addSubview(buttonsStackView)
+        addSubview(labelsStackView)
+        
+        bitcoinStackView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
+        currencyStackView.anchor(top: bitcoinStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
+        buttonsStackView.anchor(top: currencyStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
+        labelsStackView.anchor(top: buttonsStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 80)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     let btcTextField: UITextField = {
         let tf = UITextField(font: UIFont.boldSystemFont(ofSize: 30), bgColor: .white)
@@ -72,38 +114,6 @@ class ConverterCell: UICollectionViewCell {
         label.textAlignment = .right
         return label
     }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    func setup() {
-        backgroundColor = .clear
-        setupStackViews()
-    }
-    
-    func setupStackViews() {
-        let bitcoinStackView = setStackView(items: [btcTextField, btcButton], dist: .fillProportionally, axis: .horizontal)
-        let currencyStackView = setStackView(items: [currencyTextField, currencyButton], dist: .fillProportionally, axis: .horizontal)
-        let buttonsStackView = setStackView(items: [clearButton, convertButton], dist: .fillEqually, axis: .horizontal)
-        let labelsStackView = setStackView(items: [dateLabel, bitcoinValueLabel, currencyValueLabel], dist: .fillEqually, axis: .vertical)
-        
-        addSubview(bitcoinStackView)
-        addSubview(currencyStackView)
-        addSubview(buttonsStackView)
-        addSubview(labelsStackView)
-        
-        bitcoinStackView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
-        currencyStackView.anchor(top: bitcoinStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
-        buttonsStackView.anchor(top: currencyStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
-        labelsStackView.anchor(top: buttonsStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 16, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 80)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
 
 extension UIView {

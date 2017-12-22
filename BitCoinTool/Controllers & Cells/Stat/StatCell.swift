@@ -55,7 +55,7 @@ class StatCell: UICollectionViewCell {
     let valueChangesLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.customDarkBlueColor
-        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 13)
         label.numberOfLines = 1
         label.textAlignment = .center
         label.text = "Not available"

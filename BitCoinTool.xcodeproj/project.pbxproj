@@ -31,6 +31,7 @@
 		36A6F1031FD61DD800D94139 /* Reachibility+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6F1021FD61DD800D94139 /* Reachibility+Extension.swift */; };
 		36BCCC6E1FC032100015005C /* RateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BCCC6D1FC032100015005C /* RateCell.swift */; };
 		36D2A8331FEB780F00EE0380 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A8321FEB780F00EE0380 /* CurrencyListCell.swift */; };
+		36D2A8351FEB8BC800EE0380 /* SearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2A8341FEB8BC800EE0380 /* SearchFooter.swift */; };
 		36F3ED951FE8867B0008BC6A /* StatDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3ED941FE8867B0008BC6A /* StatDetailsCell.swift */; };
 		36F3ED971FE897FB0008BC6A /* ChartView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3ED961FE897FB0008BC6A /* ChartView+Extensions.swift */; };
 		36F3ED991FE899830008BC6A /* UITableVIew+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3ED981FE899830008BC6A /* UITableVIew+Extensions.swift */; };
@@ -90,6 +91,7 @@
 		36A6F1021FD61DD800D94139 /* Reachibility+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reachibility+Extension.swift"; sourceTree = "<group>"; };
 		36BCCC6D1FC032100015005C /* RateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateCell.swift; sourceTree = "<group>"; };
 		36D2A8321FEB780F00EE0380 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
+		36D2A8341FEB8BC800EE0380 /* SearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFooter.swift; sourceTree = "<group>"; };
 		36F3ED941FE8867B0008BC6A /* StatDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatDetailsCell.swift; sourceTree = "<group>"; };
 		36F3ED961FE897FB0008BC6A /* ChartView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartView+Extensions.swift"; sourceTree = "<group>"; };
 		36F3ED981FE899830008BC6A /* UITableVIew+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableVIew+Extensions.swift"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		36DCC4E01FD7F01C00161C7B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36D2A8341FEB8BC800EE0380 /* SearchFooter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				36D2A8331FEB780F00EE0380 /* CurrencyListCell.swift in Sources */,
 				36A6F1031FD61DD800D94139 /* Reachibility+Extension.swift in Sources */,
 				36BCCC6E1FC032100015005C /* RateCell.swift in Sources */,
+				36D2A8351FEB8BC800EE0380 /* SearchFooter.swift in Sources */,
 				36F3ED991FE899830008BC6A /* UITableVIew+Extensions.swift in Sources */,
 				361C51FE1FD4D9A100B48ECA /* DataManger.swift in Sources */,
 				361866381FDA0B9900BDC765 /* StatCell.swift in Sources */,

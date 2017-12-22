@@ -18,7 +18,7 @@ class CurrencyListCell: UITableViewCell {
     }
     
     func setup() {
-        let labelStackView = setStackView(items: [longNameLabel, nameLabel], dist: .fillEqually, axis: .vertical)
+        let labelStackView = setStackView(items: [nameLabel], dist: .fillEqually, axis: .vertical)
         
         addSubview(currencyImageView)
         addSubview(labelStackView)
@@ -50,8 +50,8 @@ class CurrencyListCell: UITableViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor.lightGray
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textColor = UIColor.gray
         label.textAlignment = .left
         return label
     }()
@@ -59,7 +59,7 @@ class CurrencyListCell: UITableViewCell {
     let symbolLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = UIColor.gray
+        label.textColor = UIColor.lightGray
         label.textAlignment = .center
         return label
     }()

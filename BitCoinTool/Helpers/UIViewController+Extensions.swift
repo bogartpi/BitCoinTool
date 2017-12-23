@@ -10,6 +10,17 @@ import Foundation
 import UIKit
 import Charts
 
+extension UIViewController {
+    
+    func getCurrentTime() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+}
+
 extension UITextField {
     
     func setRightPaddingPoints(_ space: CGFloat) {

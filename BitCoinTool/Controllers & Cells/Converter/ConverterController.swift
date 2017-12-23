@@ -9,15 +9,29 @@
 import Foundation
 import UIKit
 
+extension ConverterController: ChangeCurrencyDelegate {
+    
+    // MARK: - Conform to Protocol
+    
+    func didPickNewCurrency(currency: Currency) {
+        self.selectedCurrency = currency
+        print(currency)
+    }
+}
+
 class ConverterController: UICollectionViewController, ConvertCellDelegate {
     
     // MARK: - Properties
     
     fileprivate var nodataLabel: UILabel!
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
-    var currencies: [Currency]? {
+    fileprivate var currencyIsUpdated: Bool = false
+    
+    var currencies: [Currency]?
+    var selectedCurrency: Currency? {
         didSet {
-            
+            currencyIsUpdated = true
+            collectionView?.reloadData()
         }
     }
     
@@ -25,7 +39,6 @@ class ConverterController: UICollectionViewController, ConvertCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
         fetchCurrency()
     }
@@ -51,6 +64,15 @@ class ConverterController: UICollectionViewController, ConvertCellDelegate {
         collectionView?.register(ConverterCell.self, forCellWithReuseIdentifier: ConverterCell.reuseIdentifier)
     }
     
+    fileprivate func configureCell(_ cell: ConverterCell, at indexPath: IndexPath, currency: Currency) {
+        let amountOfBitcoin = calculateCurrency(currency: currency)
+        let convertedCurrencyToDecimal = convertToLargeNumber(number: Int(currency.buy))
+        cell.dateLabel.text = "Average market rates on \(getCurrentTime())"
+        cell.bitcoinValueLabel.text = "1 BTC = \(convertedCurrencyToDecimal) \(currency.name)"
+        cell.currencyValueLabel.text = "1 \(currency.name) = \(amountOfBitcoin) BTC"
+        cell.currencyButton.setTitle(currency.name, for: .normal)
+    }
+    
     // MARK: - Fetching Data
     
     fileprivate func fetchCurrency() {
@@ -73,23 +95,19 @@ class ConverterController: UICollectionViewController, ConvertCellDelegate {
         }
     }
     
-    // MARK: Handle Pressed Buttons
+    // MARK: - Handle Pressed Buttons
     
     @objc func didTapCurrencyButton(_ sender: ConverterCell) {
         let currencyListController = CurrencyListController()
         let navController = UINavigationController(rootViewController: currencyListController)
-        currencyListController.currencies = currencies!
-        self.present(navController, animated: true, completion: nil)
+        currencyListController.changeCurrencyDelegate = self
+        if let currencies = currencies {
+            currencyListController.currencies = currencies
+            self.present(navController, animated: true, completion: nil)
+        }
     }
-
-    func getCurrentTime() -> String {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        let localDate = dateFormatter.string(from: date)
-        print(localDate)
-        return localDate
-    }
+    
+    // MARK: - Business Logic
     
     func calculateCurrency(currency: Currency) -> NSDecimalNumber {
         let x = Double(1.0000 / currency.buy)
@@ -113,23 +131,21 @@ extension ConverterController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConverterCell.reuseIdentifier, for: indexPath) as! ConverterCell
         cell.delegate = self
-        let currency = currencies?[indexPath.row]
-        
-        if let currency = currency {
-            let amountOfBitcoin = calculateCurrency(currency: currency)
-            let convertedCurrencyToDecimal = convertToLargeNumber(number: Int(currency.buy))
-            cell.dateLabel.text = "Average market rates on \(getCurrentTime())"
-            cell.bitcoinValueLabel.text = "1 BTC = \(convertedCurrencyToDecimal) \(currency.name)"
-            cell.currencyValueLabel.text = "1 \(currency.name) = \(amountOfBitcoin) BTC"
-            cell.currencyButton.setTitle(currency.name, for: .normal)
+        if !currencyIsUpdated {
+            if let prevCurrency = currencies?[indexPath.row] {
+                configureCell(cell, at: indexPath, currency: prevCurrency)
+            }
+        } else if currencyIsUpdated {
+            if let currency = selectedCurrency {
+                configureCell(cell, at: indexPath, currency: currency)
+            }
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 300)
     }
-    
+
 }
 

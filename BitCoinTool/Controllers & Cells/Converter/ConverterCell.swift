@@ -10,6 +10,8 @@ import UIKit
 
 protocol ConvertCellDelegate: class {
     func didTapCurrencyButton(_ sender: ConverterCell)
+    func fromBitcoinToCurrency(bitcoin amount: Double) -> Double
+    func fromCurrencyToBitcoin(currency amount: Double) -> Double
 }
 
 class ConverterCell: UICollectionViewCell {
@@ -22,10 +24,35 @@ class ConverterCell: UICollectionViewCell {
         super.init(frame: frame)
         setup()
         currencyButton.addTarget(self, action: #selector(handleCurrencyButton), for: .touchUpInside)
+        btcTextField.addTarget(self, action: #selector(handleBitcoinTextField), for: .editingChanged)
+        currencyTextField.addTarget(self, action: #selector(handleCurrencyTextField), for: .editingChanged)
+        clearButton.addTarget(self, action: #selector(handleClearButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc func handleBitcoinTextField() {
+        guard let btcAmount = btcTextField.text, let doubleValue = Double(btcAmount) else { return }
+        guard let currencyAmount = delegate?.fromBitcoinToCurrency(bitcoin: doubleValue) else { return }
+        currencyTextField.text = String(currencyAmount)
+    }
+    
+    @objc func handleCurrencyTextField() {
+        guard let currencyAmount = currencyTextField.text, let doubleValue = Double(currencyAmount) else { return }
+        guard let bitcoinAmount = delegate?.fromCurrencyToBitcoin(currency: doubleValue) else { return }
+        let behaviour = NSDecimalNumberHandler(roundingMode: .up,
+                                               scale: 8, raiseOnExactness: false,
+                                               raiseOnOverflow: false, raiseOnUnderflow: false,
+                                               raiseOnDivideByZero: false)
+        let bitcoin = NSDecimalNumber(value: bitcoinAmount).rounding(accordingToBehavior: behaviour)
+        btcTextField.text = String(describing: bitcoin)
     }
     
     @objc func handleCurrencyButton(_ sender: UIButton) {
         delegate?.didTapCurrencyButton(self)
+    }
+    
+    @objc func handleClearButton(_ sender: UIButton) {
+        btcTextField.text = ""
+        currencyTextField.text = ""
     }
     
     func setup() {
@@ -36,7 +63,7 @@ class ConverterCell: UICollectionViewCell {
     func setupStackViews() {
         let bitcoinStackView = setStackView(items: [btcTextField, btcButton], dist: .fillProportionally, axis: .horizontal)
         let currencyStackView = setStackView(items: [currencyTextField, currencyButton], dist: .fillProportionally, axis: .horizontal)
-        let buttonsStackView = setStackView(items: [convertButton], dist: .fillEqually, axis: .horizontal)
+        let buttonsStackView = setStackView(items: [clearButton], dist: .fillEqually, axis: .horizontal)
         let labelsStackView = setStackView(items: [dateLabel, bitcoinValueLabel, currencyValueLabel], dist: .fillEqually, axis: .vertical)
         
         addSubview(bitcoinStackView)

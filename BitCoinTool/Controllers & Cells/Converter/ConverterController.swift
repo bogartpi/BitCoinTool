@@ -15,7 +15,26 @@ extension ConverterController: ChangeCurrencyDelegate {
     
     func didPickNewCurrency(currency: Currency) {
         self.selectedCurrency = currency
-        print(currency)
+    }
+    
+    func fromBitcoinToCurrency(bitcoin amount: Double) -> Double {
+        if selectedCurrency != nil {
+            guard let rate = selectedCurrency?.buy else { return 0.0 }
+            return Double(amount * rate)
+        } else {
+            guard let rate = currencies?.first?.buy else { return 0.0 }
+            return Double(amount * rate)
+        }
+    }
+    
+    func fromCurrencyToBitcoin(currency amount: Double) -> Double {
+        if selectedCurrency != nil {
+            guard let rate = selectedCurrency?.buy else { return 0.0 }
+            return Double(amount / rate)
+        } else {
+            guard let rate = currencies?.first?.buy else { return 0.0 }
+            return Double(amount / rate)
+        }
     }
 }
 
@@ -63,6 +82,15 @@ class ConverterController: UICollectionViewController, ConvertCellDelegate {
         collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         collectionView?.register(ConverterCell.self, forCellWithReuseIdentifier: ConverterCell.reuseIdentifier)
     }
+    
+     /**
+        - parameters:
+            - cell: cell
+            - indexPath: indexPath
+        - Returns: indexPath
+     
+        Configuring cell with data
+     */
     
     fileprivate func configureCell(_ cell: ConverterCell, at indexPath: IndexPath, currency: Currency) {
         let amountOfBitcoin = calculateCurrency(currency: currency)
@@ -117,7 +145,6 @@ class ConverterController: UICollectionViewController, ConvertCellDelegate {
                                                raiseOnDivideByZero: false)
         return NSDecimalNumber(value: x).rounding(accordingToBehavior: behaviour)
     }
-    
 }
 
 // MARK: - Collection View Methods
@@ -131,6 +158,7 @@ extension ConverterController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConverterCell.reuseIdentifier, for: indexPath) as! ConverterCell
         cell.delegate = self
+        
         if !currencyIsUpdated {
             if let prevCurrency = currencies?[indexPath.row] {
                 configureCell(cell, at: indexPath, currency: prevCurrency)

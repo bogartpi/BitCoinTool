@@ -35,8 +35,9 @@ class CurrencyListController: UITableViewController {
     // MARK: - Setup Views
     
     fileprivate func setupNavBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissVC))
+        navigationController?.navigationBar.tintColor = UIColor.gray
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     fileprivate func setupTableView() {

@@ -66,7 +66,6 @@ class RateCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        setDefaultShadowForCell(contentView: self.contentView)
     }
     
     func setup() {

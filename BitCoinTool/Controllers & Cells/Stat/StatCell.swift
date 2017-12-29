@@ -72,8 +72,7 @@ class StatCell: UICollectionViewCell {
     
     func setupViews() {
         backgroundColor = .white
-        setDefaultShadowForCell(contentView: self.contentView)
-        
+    
         let stackView = UIStackView(arrangedSubviews: [marketName,
                                                        marketValue,
                                                        lastUpdated,

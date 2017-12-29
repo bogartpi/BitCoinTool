@@ -15,12 +15,14 @@ class RateController: UICollectionViewController {
     fileprivate var nodataLabel: UILabel!
     var currencies: [Currency]? = []
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
+    fileprivate var refreshControl = UIRefreshControl()
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setRefreshControl()
         fetchCurrency()
     }
     
@@ -32,8 +34,13 @@ class RateController: UICollectionViewController {
         collectionView?.backgroundView = self.activityIndicatorView
         collectionView?.backgroundColor = UIColor.customWhiteDarkColor
         collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
-    
         self.nodataLabel = setNodataLabel()
+    }
+    
+    fileprivate func setRefreshControl() {
+        collectionView?.refreshControl = refreshControl
+        refreshControl.tintColor = UIColor.customWhitecolor
+        refreshControl.addTarget(self, action: #selector(refreshView), for: UIControlEvents.valueChanged)
     }
     
     fileprivate func configure(cell: RateCell, at indexPath: IndexPath) {
@@ -64,6 +71,11 @@ class RateController: UICollectionViewController {
                 self.collectionView?.reloadData()
             }
         }
+    }
+    
+    @objc fileprivate func refreshView() {
+        fetchCurrency()
+        refreshControl.endRefreshing()
     }
 
 }

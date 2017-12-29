@@ -87,7 +87,7 @@ class ConverterCell: UICollectionViewCell {
     }()
     
     let btcButton: UIButton = {
-        let button = UIButton(title: "BTC", bgColor: UIColor.customYellowColor, titleSize: 30)
+        let button = UIButton(title: "BTC", bgColor: UIColor.customGreenColor, titleSize: 30)
         button.anchor(width: 120, height: 0)
         return button
     }()
@@ -98,20 +98,18 @@ class ConverterCell: UICollectionViewCell {
     }()
     
     let currencyButton: UIButton = {
-        let button = UIButton(title: "", bgColor: UIColor.customBlueColor, titleSize: 30)
+        let button = UIButton(title: "", bgColor: UIColor.gray, titleSize: 30)
         button.anchor(width: 120, height: 0)
         return button
     }()
     
     let clearButton: UIButton = {
-        let button = UIButton(title: "CLEAR", bgColor: UIColor.customRedColor, titleSize: 20)
-        button.setDefaultShadow()
+        let button = UIButton(title: "CLEAR", bgColor: UIColor.customBlueColor, titleSize: 25)
         return button
     }()
     
     let convertButton: UIButton = {
         let button = UIButton(title: "CONVERT", bgColor: UIColor.customGreenColor, titleSize: 25)
-        button.setDefaultShadow()
         return button
     }()
     

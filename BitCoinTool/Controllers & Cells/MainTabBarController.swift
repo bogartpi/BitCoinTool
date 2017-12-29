@@ -26,7 +26,7 @@ class MainTabBarController: UITabBarController {
         
         // Controllers
         
-        let rateController = RateController(collectionViewLayout: UICollectionViewFlowLayout())
+        let rateController = PriceController(collectionViewLayout: UICollectionViewFlowLayout())
 
         
         let converterController = ConverterController(collectionViewLayout: UICollectionViewFlowLayout())

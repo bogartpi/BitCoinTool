@@ -13,8 +13,7 @@ class StatCell: UICollectionViewCell {
     let marketName: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.customDarkBlueColor
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 21)
         label.numberOfLines = 3
         return label
     }()
@@ -22,8 +21,7 @@ class StatCell: UICollectionViewCell {
     let marketValue: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.customBlueColor
-        label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.textAlignment = .left
+        label.font = UIFont.boldSystemFont(ofSize: 28)
         return label
     }()
     
@@ -32,7 +30,6 @@ class StatCell: UICollectionViewCell {
         label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 2
-        label.textAlignment = .left
         return label
     }()
     
@@ -41,7 +38,6 @@ class StatCell: UICollectionViewCell {
         label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 10
-        label.textAlignment = .left
         return label
     }()
     

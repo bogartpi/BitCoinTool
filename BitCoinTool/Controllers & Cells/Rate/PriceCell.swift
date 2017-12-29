@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RateCell: UICollectionViewCell {
+class PriceCell: UICollectionViewCell {
 
     // MARK: - Type Properties
 

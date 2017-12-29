@@ -17,10 +17,11 @@ class StatViewController: UICollectionViewController {
             self.collectionView?.reloadData()
         }
     }
-    
+
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     fileprivate var nodataLabel: UILabel!
     fileprivate var statMenuTitles: [StatMenuTitles] = [.price, .transactions, .capitalization]
+
     
     // MARK: - View Life Cycle
     
@@ -148,5 +149,6 @@ extension StatViewController: UICollectionViewDelegateFlowLayout {
         showStatDetailsController(at: indexPath)
     }
 }
+
 
 

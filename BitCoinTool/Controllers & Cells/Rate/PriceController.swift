@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RateController: UICollectionViewController {
+class PriceController: UICollectionViewController {
 
     // MARK: - Properties
     
@@ -29,11 +29,11 @@ class RateController: UICollectionViewController {
     // MARK: - Setup View Methods
 
     fileprivate func setupViews() {
-        setupNavigationTitle(title: "Rate")
+        setupNavigationTitle(title: "Price")
         self.activityIndicatorView = setupActivityIndicator()
         collectionView?.backgroundView = self.activityIndicatorView
         collectionView?.backgroundColor = UIColor.customWhiteDarkColor
-        collectionView?.register(RateCell.self, forCellWithReuseIdentifier: RateCell.reuseIdentifier)
+        collectionView?.register(PriceCell.self, forCellWithReuseIdentifier: PriceCell.reuseIdentifier)
         self.nodataLabel = setNodataLabel()
     }
     
@@ -43,7 +43,7 @@ class RateController: UICollectionViewController {
         refreshControl.addTarget(self, action: #selector(refreshView), for: UIControlEvents.valueChanged)
     }
     
-    fileprivate func configure(cell: RateCell, at indexPath: IndexPath) {
+    fileprivate func configure(cell: PriceCell, at indexPath: IndexPath) {
         guard let currency = currencies?[indexPath.row] else { return }
         cell.countryImage.image = UIImage(named: currency.name)
         cell.buyValueLabel.text = convertToLargeNumber(number: Int(currency.buy))
@@ -82,7 +82,7 @@ class RateController: UICollectionViewController {
 
 // MARK: - Collection View Methods
 
-extension RateController: UICollectionViewDelegateFlowLayout {
+extension PriceController: UICollectionViewDelegateFlowLayout {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return currencies == nil ? 0 : 1
@@ -96,7 +96,7 @@ extension RateController: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RateCell.reuseIdentifier, for: indexPath) as? RateCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCell.reuseIdentifier, for: indexPath) as? PriceCell else {
             fatalError("Unexpected Table View Cell")
         }
         configure(cell: cell, at: indexPath)

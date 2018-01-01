@@ -98,7 +98,7 @@ class ConverterCell: UICollectionViewCell {
     }()
     
     let currencyButton: UIButton = {
-        let button = UIButton(title: "", bgColor: UIColor.gray, titleSize: 30)
+        let button = UIButton(title: "", bgColor: UIColor.customDarkBlueColor, titleSize: 30)
         button.anchor(width: 120, height: 0)
         return button
     }()

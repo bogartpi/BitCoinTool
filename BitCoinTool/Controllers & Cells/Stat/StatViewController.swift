@@ -8,6 +8,15 @@
 
 import UIKit
 
+enum StatMenuTitles: String {
+    case price = "Bitcoin Price"
+    case transactions = "Confirmed Transactions"
+    case capitalization = "Market Capitalization"
+    case mempoolSize = "Mempool Size"
+    case transPerBlock = "Transactions Per Block"
+    case minersRevenue = "Miners Revenue"
+}
+
 class StatViewController: UICollectionViewController {
     
     // MARK: - Properties
@@ -20,7 +29,7 @@ class StatViewController: UICollectionViewController {
 
     fileprivate var activityIndicatorView: UIActivityIndicatorView!
     fileprivate var nodataLabel: UILabel!
-    fileprivate var statMenuTitles: [StatMenuTitles] = [.price, .transactions, .capitalization]
+    fileprivate var statMenuTitles: [StatMenuTitles] = [.price, .transactions, .capitalization, .mempoolSize, .transPerBlock, .minersRevenue]
 
     
     // MARK: - View Life Cycle
@@ -48,7 +57,9 @@ class StatViewController: UICollectionViewController {
     
     fileprivate func fetchMarketData() {
         DispatchQueue.main.async {
-            DataManager.fetchMarketData([API.MarketURL, API.TransactionURL, API.CapitalizationURL]) { (markets, error) in
+            DataManager.fetchMarketData([API.MarketURL, API.TransactionURL,
+                                         API.CapitalizationURL, API.MempoolSizeURL,
+                                         API.TransactionsPerBlock, API.MinersRevenue]) { (markets, error) in
                 if let _ = error {
                     if !self.checkReachability() {
                         self.showAlertWarning(title: "No Internet Connection",

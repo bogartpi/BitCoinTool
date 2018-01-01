@@ -8,12 +8,6 @@
 
 import Foundation
 
-enum StatMenuTitles: String {
-    case price = "Bitcoin Price"
-    case transactions = "Confirmed Transactions"
-    case capitalization = "Market Capitalization"
-}
-
 struct Market: Codable {
     
     let name: String
